@@ -7,6 +7,8 @@ print pix[10,10] #Get the RGBA Value of the a pixel of an image
 from PIL import Image
 import random as r
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
 im = plt.imread('testmap.png')
 img = Image.open('testmap.png')
 pix = img.load()
@@ -35,18 +37,25 @@ lpy=0
 track=[]
 a=r.random()
 b=r.random()
-x_init=618
-y_init=150
+x_init=510
+y_init=17
 track.append((x_init,y_init))
+pt,=plt.plot(x_init,y_init,marker='o')
 #plt.scatter(a*786,b*293)
 '''print img.size'''
-for it in range(0,2000):
+for it in range(0,1000):
 	min_dis=100000
 	delx=-11
 	dely=-11
 	for i in range(max(x_init-50,0),min(786,x_init+50)) :
 		for j in range(max(y_init-50,0),min(293,y_init+50)):
-			if pix[i,j] in var and (abs(x_init-i)**2+abs(y_init-j)**2)<min_dis and not (i==x_init or j==y_init) and ((lpx==0 and lpy==0) or ((x_init-lpx)*(i-x_init)+(y_init-lpy)*(j-y_init))>=0 or x_init>774 or x_init<8 or y_init>281 or y_init<8 ) and (i,j) not in track:
+			if i==x_init and j==y_init:
+				continue
+			temp_delx=(i-x_init)*5/max(abs(i-x_init),abs(j-y_init))
+			temp_dely=(j-y_init)*5/max(abs(i-x_init),abs(j-y_init))
+			if pix[i,j] in var and (abs(x_init-i)**2+abs(y_init-j)**2)<min_dis and ((lpx==0 and lpy==0) or ((x_init-lpx)*(i-x_init)+(y_init-lpy)*(j-y_init))>=0 or x_init>774 or x_init<8 or y_init>281 or y_init<8 ):
+				if ((x_init+temp_delx,y_init+temp_dely) in track):
+					continue
 				x_m=i
 				y_m=j
 				min_dis=abs(x_init-i)**2+abs(y_init-j)**2
@@ -58,17 +67,22 @@ for it in range(0,2000):
 		lpx=x_init
 		lpy=y_init
 		x_init=x_init+delx
-		y_init=y_init+dely
-		plt.scatter(x_init,y_init)
-	else: 
+		y_init=max(y_init+dely,10)
+		pt.set_data(x_init,y_init)
+	else:
+		#print it 
 		lpx=x_init
 		lpy=y_init
-		x_init=x_init+5
-		y_init=y_init+5
-		plt.scatter(x_init,y_init)
-	track.append((x_init,y_init))
-
-plt.show()
+		x_init=x_init-5
+		y_init=max(y_init-5,10)
+		pt.set_data(x_init,y_init)
+	if(x_init>774 or x_init<8 or y_init>281 or y_init<8):
+		track=[]
+		lpx=0
+		lpy=0
+	else:
+		track.append((x_init,y_init))
+	plt.pause(0.01)
 
 
 
