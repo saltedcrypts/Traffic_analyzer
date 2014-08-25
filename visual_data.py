@@ -35,54 +35,55 @@ var=[(218, 37, 91),
 lpx=0
 lpy=0
 track=[]
+chk_avail=0
 a=r.random()
 b=r.random()
 x_init=510
 y_init=17
 track.append((x_init,y_init))
 pt,=plt.plot(x_init,y_init,marker='o')
+#x_init>774 or x_init<8 or y_init>281 or y_init<8 
 #plt.scatter(a*786,b*293)
 '''print img.size'''
 for it in range(0,1000):
 	min_dis=100000
 	delx=-11
 	dely=-11
-	for i in range(max(x_init-50,0),min(786,x_init+50)) :
-		for j in range(max(y_init-50,0),min(293,y_init+50)):
+	check_avail=0
+	for i in range(max(x_init-50,8),min(774,x_init+50)) :
+		for j in range(max(y_init-50,8),min(281,y_init+50)):
 			if i==x_init and j==y_init:
 				continue
 			temp_delx=(i-x_init)*5/max(abs(i-x_init),abs(j-y_init))
 			temp_dely=(j-y_init)*5/max(abs(i-x_init),abs(j-y_init))
-			if pix[i,j] in var and (abs(x_init-i)**2+abs(y_init-j)**2)<min_dis and ((lpx==0 and lpy==0) or ((x_init-lpx)*(i-x_init)+(y_init-lpy)*(j-y_init))>=0 or x_init>774 or x_init<8 or y_init>281 or y_init<8 ):
-				if ((x_init+temp_delx,y_init+temp_dely) in track):
+			if pix[i,j] in var and (abs(x_init-i)**2+abs(y_init-j)**2)<=min_dis and ((lpx==0 and lpy==0) or ((x_init-lpx)*(i-x_init)+(y_init-lpy)*(j-y_init))>=0):
+				if (min(774,max(x_init+delx,4)),min(281,max(y_init+dely,4))) in track:
 					continue
+				p=r.random()
 				x_m=i
 				y_m=j
 				min_dis=abs(x_init-i)**2+abs(y_init-j)**2
 				delx=(i-x_init)*5/max(abs(i-x_init),abs(j-y_init))
 				dely=(j-y_init)*5/max(abs(i-x_init),abs(j-y_init))
 
+
 	if not (delx==-11 or dely==-11):
 		#print delx,dely
 		lpx=x_init
 		lpy=y_init
-		x_init=x_init+delx
-		y_init=max(y_init+dely,10)
+		x_init=min(774,max(x_init+delx,4))
+		y_init=min(281,max(y_init+dely,4))
 		pt.set_data(x_init,y_init)
-	else:
-		#print it 
+	track.append((x_init,y_init))
+	plt.pause(0.001)
+
+'''	else:
 		lpx=x_init
 		lpy=y_init
-		x_init=x_init-5
-		y_init=max(y_init-5,10)
+		x_init=min(774,max(x_init-4,4))
+		y_init=min(281,max(y_init-4,4))
 		pt.set_data(x_init,y_init)
-	if(x_init>774 or x_init<8 or y_init>281 or y_init<8):
-		track=[]
-		lpx=0
-		lpy=0
-	else:
-		track.append((x_init,y_init))
-	plt.pause(0.01)
+		'''
 
 
 
