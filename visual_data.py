@@ -77,25 +77,32 @@ for it in range(0,1000):
 		dely=-11
 		x_m=0
 		y_m=0
+		curr_dot=1
 		dot_product=0
 		x_init=point_c[pnt][0]
 		y_init=point_c[pnt][1]
 		for i in list_p:
-			if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis and (i[0],i[1]) not in track[pnt] and ( (i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt])>=0):
+			if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis and (i[0],i[1]) not in track[pnt] and ( curr_dot*((i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt]))>=0):
+				if curr_dot==-1:
+					curr_dot=1
 				min_dis=(i[0]-x_init)**2 + (i[1]-y_init)**2
 				x_m=i[0]
 				y_m=i[1]
 				dot_product=(i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt])
 				p=r.random()
-				if p>1:
-					dot_product=0
+				if p>0.9:
+					break
+		if x_m==0 and y_m==0:
+			curr_dot=-1
+			track[pnt]=[(-1,-1) for i in track[pnt]]
+			continue
 		lpx[pnt]=x_init
 		lpy[pnt]=y_init
 		x_init=x_m	
 		y_init=y_m
 		track[pnt].append((x_init,y_init))
-		track[pnt]=track[pnt][len(track[pnt])-20:len(track[pnt])]
+		track[pnt]=track[pnt][len(track[pnt])-100:len(track[pnt])]
 		point_l[pnt].set_data(x_init,y_init)
 		point_c[pnt][0]=x_init
 		point_c[pnt][1]=y_init
-	plt.pause(0.5)
+	plt.pause(0.1)
