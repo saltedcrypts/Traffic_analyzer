@@ -14,11 +14,12 @@ from sqlite3 import *
 import sys
 from random import *
 import matplotlib.animation as animation
-
+from math import *
+from direction.py import *
 ## --------------------------------------------------##
 
-#con=connect('database/database.db')
-#cur=con.cursor()
+con=connect('database/database.db')
+cur=con.cursor()
 im = plt.imread('testmap.png')
 img = Image.open('testmap.png')
 pix = img.load()
@@ -145,14 +146,14 @@ plt.scatter(x,y)
 ptbus,=plt.plot(rtx[0][0],rty[0][0],marker='o')
 
 for i in range(1000):
-    '''
+    
     try:
-        cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT)"%i)
+        cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT, speed FLOAT, Direction INT)"%i)
     except:
         cur.execute("DROP TABLE IF EXISTS Data_%d"%i)
-        cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT)"%i)
+        cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT , speed FLOAT, Direction INT)"%i)
         pass
-    '''
+    
     i1=i%len(rtx[0])
     if(i1>0 and [rtx[0][i1],rty[0][i1]]==[rtx[0][i1-1],rty[0][i1-1]] and not([rtx[0][i1-2],rty[0][i1-2]]==[rtx[0][i1],rty[0][i1]])):
         n=near([rtx[0][i1],rty[0][i1]])
@@ -234,8 +235,19 @@ for i in range(1000):
         tem=post(j)
         if tem==0:
             continue
+        if(test_points[0]==-1):
+            direct=int(ceil(4*random))
+            speed=10+10*random()
+        else:
+            bus_no=test_point[0]
+            if(rtx[bus_no][i%len(rtx[bus_no])]==rtx[bus_no][(i+1)%len(rtx[bus_no])] and rtx[bus_no][i%len(rtx[bus_no])]==rtx[bus_no][(i+1)%len(rtx[bus_no])]):
+                direct=int(ceil(4*random))
+                speed=2+1*random()
+            else:                                                                                    
+                direct=get_dir(rtx[bus_no][(i-1)%len(rtx[bus_no])],rty[bus_no][(i-1)%len(rtx[bus_no])],rtx[bus_no][i%len(rtx[bus_no])],rty[bus_no][i%len(rtx[bus_no])])
+                speed=50+10*random()
         pt[j].set_data(tem[0]+random()*((-1)**j),tem[1]+random()*((-1)**j))
-        #cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f)"%(i,j,tem[0],tem[1]))
+        cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f,%f,%d)"%(i,j,tem[0],tem[1],speed,direct))
         
     
     plt.pause(0.001)
@@ -272,7 +284,7 @@ for i in range(1000):
         track[pnt].append((x_init,y_init))
         track[pnt]=track[pnt][len(track[pnt])-100:len(track[pnt])]
         point_l[pnt].set_data(x_init,y_init)
-        #cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f)"%(it,random_id[pnt],x_init,y_init))
+        cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f,%f,%d)"%(it,random_id[pnt],x_init,y_init,10+random(),int(ceil(4*random()))))
         point_c[pnt][0]=x_init
         point_c[pnt][1]=y_init
 
