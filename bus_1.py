@@ -15,7 +15,7 @@ import sys
 from random import *
 import matplotlib.animation as animation
 from math import *
-from direction.py import *
+from direction import *
 ## --------------------------------------------------##
 
 con=connect('database/database.db')
@@ -235,13 +235,15 @@ for i in range(1000):
         tem=post(j)
         if tem==0:
             continue
-        if(test_points[0]==-1):
-            direct=int(ceil(4*random))
+        if(test_points[j][0]==-1):
+            
+            direct=int(ceil(4*random()))
             speed=10+10*random()
         else:
-            bus_no=test_point[0]
+            bus_no=test_points[j][0]
             if(rtx[bus_no][i%len(rtx[bus_no])]==rtx[bus_no][(i+1)%len(rtx[bus_no])] and rtx[bus_no][i%len(rtx[bus_no])]==rtx[bus_no][(i+1)%len(rtx[bus_no])]):
-                direct=int(ceil(4*random))
+                #print 'stopped'
+                direct=int(ceil(4*random()))
                 speed=2+1*random()
             else:                                                                                    
                 direct=get_dir(rtx[bus_no][(i-1)%len(rtx[bus_no])],rty[bus_no][(i-1)%len(rtx[bus_no])],rtx[bus_no][i%len(rtx[bus_no])],rty[bus_no][i%len(rtx[bus_no])])
