@@ -14,7 +14,7 @@ img = Image.open('testmap.png')
 pix = img.load()
 implot = plt.imshow(im)
 print img.size
-num_points=1
+num_points=150
 #print pix[798,190]
 '''x_init=11
 y_init=446
@@ -59,8 +59,8 @@ for j in range(0,num_points):
 point_l=[]
 point_c=[]
 #693,303
-print lpx
-print lpy
+#print lpx
+#print lpy
 for i in range(0,num_points):
 	a=r.random()
 	b=r.random()
@@ -90,8 +90,6 @@ for it in range(0,1000):
 				continue
 			print_val=(i[0]-x_init)**2+(i[1]-y_init)**2
 			entered=0
-			#if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis:
-			#	print (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis, (i[0],i[1]) not in track[pnt], ( curr_dot*((i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt]))>=0)
 			if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis and (i[0],i[1]) not in track[pnt] and ( curr_dot*((i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt]))>0):
 				entered=1
 				if not(curr_dot==1):
@@ -103,7 +101,6 @@ for it in range(0,1000):
 				p=r.random()
 				if p>0.9:
 					break
-		print x_m, y_m, entered
 		#print track[pnt]
 		if x_m==0 and y_m==0:
 			track[pnt]=[(-1,-1) for i in track[pnt]]
