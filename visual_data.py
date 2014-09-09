@@ -34,11 +34,11 @@ var=[(218, 37, 91), (244, 129, 23), (255, 242, 0),(153, 217, 234),(218, 7, 29),
 (185, 122, 87),
 (163, 73, 164)]
 list_p=[]
-for i in range(4,786,4) :
-	for j in range(4,293,4):
+for i in range(4,786,14) :
+	for j in range(4,293,14):
 		if pix[i,j] in var:
 			list_p.append((i,j))
-			#plt.scatter(i,j)
+			plt.scatter(i,j)
 
 lpx=[]
 lpy=[]
