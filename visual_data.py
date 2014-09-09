@@ -74,7 +74,7 @@ for i in range(0,num_points):
 for it in range(0,1000):
 	for pnt in range(len(point_c)):
 		if pix[point_c[pnt][0],point_c[pnt][1]] in var:
-			min_dis=20
+			min_dis=80
 		else:
 			min_dis=100000
 		delx=-11
@@ -90,9 +90,9 @@ for it in range(0,1000):
 				continue
 			print_val=(i[0]-x_init)**2+(i[1]-y_init)**2
 			entered=0
-			if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis:
-				print (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis, (i[0],i[1]) not in track[pnt], ( curr_dot*((i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt]))>=0)
-			if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis and (i[0],i[1]) not in track[pnt] and ( curr_dot*((i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt]))>=0):
+			#if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis:
+			#	print (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis, (i[0],i[1]) not in track[pnt], ( curr_dot*((i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt]))>=0)
+			if (i[0]-x_init)**2	+ (i[1]-y_init)**2 <= min_dis and (i[0],i[1]) not in track[pnt] and ( curr_dot*((i[0]-x_init)*(x_init-lpx[pnt])+(i[1]-y_init)*(y_init-lpy[pnt]))>0):
 				entered=1
 				if not(curr_dot==1):
 					curr_dot=1
@@ -108,7 +108,8 @@ for it in range(0,1000):
 		if x_m==0 and y_m==0:
 			track[pnt]=[(-1,-1) for i in track[pnt]]
 			track[pnt][-1]=(x_init,y_init)
-			curr_dot=0
+			lpx[pnt]=2*x_init-lpx[pnt]
+			lpy[pnt]=2*y_init-lpy[pnt]
 		else:
 			lpx[pnt]=x_init
 			lpy[pnt]=y_init
