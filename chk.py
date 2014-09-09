@@ -33,9 +33,6 @@ var=[(218, 37, 91), (244, 129, 23), (255, 242, 0),(153, 217, 234),(218, 7, 29),
 (185, 122, 87),
 (163, 73, 164)]
 list_p=[]
-#x_init>774 or x_init<8 or y_init>281 or y_init<8 
-#plt.scatter(a*786,b*293)
-'''print img.size'''
 for i in range(4,800,8) :
 	for j in range(4,305,8):
 		if pix[i,j] in var:

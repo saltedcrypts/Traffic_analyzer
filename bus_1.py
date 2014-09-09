@@ -4,23 +4,28 @@ pix = im.load()
 print im.size #Get the width and hight of the image for iterating over
 print pix[10,10] #Get the RGBA Value of the a pixel of an image
 #pix[x,y] = value # Set the RGBA Value of the image (tuple)'''
+
 from PIL import Image
+import math
 import random as r
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from sqlite3 import *
 import sys
-con=connect('database/database.db')
-cur=con.cursor()
+from random import *
+import matplotlib.animation as animation
+
+## --------------------------------------------------##
+
+#con=connect('database/database.db')
+#cur=con.cursor()
 im = plt.imread('testmap.png')
 img = Image.open('testmap.png')
 pix = img.load()
 implot = plt.imshow(im)
 print img.size
-#print pix[798,190]
-'''x_init=11
-y_init=446
-plt.scatter([x_init],[y_init])'''
+
+## var STORES THE LIST OF PIXELS WHICH CONSTITUTE TH ROAD
 var=[(218, 37, 91), (244, 129, 23), (255, 242, 0),(153, 217, 234),(218, 7, 29),
 (255, 174, 201),
 (195,195,195),
@@ -54,15 +59,8 @@ y_init=94
 
 point_l=[]
 point_c=[]
-#693,303
-print lpx
-print lpy
-#x_init>774 or x_init<8 or y_init>281 or y_init<8 
-#plt.scatter(a*786,b*293)
-'''print img.size'''
+
 #####################################################################################################################################################################
-from random import *
-import matplotlib.animation as animation
 
 
 x=[35,120,215,120,215,305,396,485,621,759,354,320]
@@ -77,6 +75,9 @@ bus2=[[127,103],[225,45],[-1,0],[253,26],[305,112],[349,85],[-1,0],[401,173],[31
 bus3=[[349,89],[480,9],[532,91],[682,7],[790,93],[710,158],[617,44],[401,172],[348,89]]
 pos=[[44,152],[127,103],[349,89]]
 busses=[bus1,bus2,bus3]
+
+#####    DEFINING AUXILIARY FUNCTIONS
+
 def near(pos):
     ind=-1
     m=1000000000000
@@ -95,6 +96,14 @@ def post(ind):
         return pos[test_points[ind][0]]
 def dist(a,b):
     return ((a[0]-b[0])**2+(a[1]-b[1])**2)**0.5
+
+def poissons_rand(l):
+    return (-1*math.log(1-random())*l)
+
+
+
+########################################################   END AUXILIARY DEFINITION SECTION   #########
+
 rtx=[]
 rty=[]
 for bus in busses:
@@ -134,24 +143,36 @@ for i in range(len(test_points)):
     pt[i],=plt.plot(tem[0],tem[1],marker='o')
 plt.scatter(x,y)
 ptbus,=plt.plot(rtx[0][0],rty[0][0],marker='o')
+
 for i in range(1000):
+    '''
     try:
         cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT)"%i)
     except:
         cur.execute("DROP TABLE IF EXISTS Data_%d"%i)
         cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT)"%i)
-        
         pass
+    '''
     i1=i%len(rtx[0])
     if(i1>0 and [rtx[0][i1],rty[0][i1]]==[rtx[0][i1-1],rty[0][i1-1]] and not([rtx[0][i1-2],rty[0][i1-2]]==[rtx[0][i1],rty[0][i1]])):
         n=near([rtx[0][i1],rty[0][i1]])
+        board_number=poissons_rand(4);
+        # NUMBER OF PEOPLE WHO BOARD IS DEPENDANT ON THE BUS -- LAMBDA=AVG NUMBER WHO BOARD A BUS
         for k in range(len(test_points)):
-            if(test_points[k][0]==-1 and dist([x[n],y[n]],test_points[k][1])<5 and random()<0.2):
+            if(board_number==0):
+                break
+            if(test_points[k][0]==-1 and dist([x[n],y[n]],test_points[k][1])<5 and board_number>0):
+                board_number=board_number-1
                 test_points[k][0]=0
                 brd=brd+1
-                
+
+        # NUMBER OF PEOPLE WHO DEBOARD IS DEPENDANT ON THE STOP -- LAMBDA=AVG NUMBER WHO GET DOWN AT THE STOP                
+        deboard_number=int(poissons_rand(7))
         for k in range(len(test_points)):
-            if(test_points[k][0]==0 and random()<0.2):
+            if (deboard_number==0):
+                break
+            if(test_points[k][0]==0 and deboard_number>0):
+                deboard_number=deboard_number-1
                 dbrd=dbrd+1
                 test_points[k][0]=-1
                 random_id.append(next_index)
@@ -214,7 +235,7 @@ for i in range(1000):
         if tem==0:
             continue
         pt[j].set_data(tem[0]+random()*((-1)**j),tem[1]+random()*((-1)**j))
-        cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f)"%(i,j,tem[0],tem[1]))
+        #cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f)"%(i,j,tem[0],tem[1]))
         
     
     plt.pause(0.001)
@@ -251,7 +272,7 @@ for i in range(1000):
         track[pnt].append((x_init,y_init))
         track[pnt]=track[pnt][len(track[pnt])-100:len(track[pnt])]
         point_l[pnt].set_data(x_init,y_init)
-        cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f)"%(it,random_id[pnt],x_init,y_init))
+        #cur.execute("INSERT INTO Data_%d VALUES(%d,%f,%f)"%(it,random_id[pnt],x_init,y_init))
         point_c[pnt][0]=x_init
         point_c[pnt][1]=y_init
 
