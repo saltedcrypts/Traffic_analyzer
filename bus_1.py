@@ -221,7 +221,7 @@ for i in range(1000):
             if (deboard_number<=0):
                 break
             if(test_points[k][0]==1 and deboard_number>0):
-                print 'here'
+                #print 'here'
                 deboard_number=deboard_number-1
                 dbrd=dbrd+1
                 test_points[k][0]=-1
@@ -320,6 +320,6 @@ for i in range(1000):
         point_c[pnt][0]=x_init
         point_c[pnt][1]=y_init
         street=str(pix[int(x_init),int(y_init)])
-        cur.execute('INSERT INTO Data_%d VALUES(%d,%f,%f,%f,%d,"%s")'%(it,random_id[pnt],x_init,y_init,10+random(),int(ceil(4*random())),street))
+        cur.execute('INSERT INTO Data_%d VALUES(%d,%f,%f,%f,%d,"%s")'%(it,random_id[pnt],x_init,y_init,50+10*random(),int(ceil(4*random())),street))
     plt.pause(0.001)        
 #plt.show()
