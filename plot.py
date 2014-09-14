@@ -11,7 +11,7 @@ for i in range(1000):
 con=connect('database/database.db')
 cur=con.cursor()
 
-for i in range(900):
+for i in range(895,901):
     cur.execute("SELECT * FROM Data_%d ORDER BY Id"%i)
     rows = cur.fetchall()
     
