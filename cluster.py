@@ -6,6 +6,7 @@ import matplotlib.animation as animation
 im = plt.imread('testmap.png')
 implot = plt.imshow(im)
 pt=[0 for i in range(1000)]
+
 con=connect('database/database.db')
 cur=con.cursor()
 pos=[[-1,-1] for i in range(1000)]
@@ -14,8 +15,36 @@ stationy=[141,84,28,235,185,130,185,132,184,78,82,220]
 bus=[[]]
 new_bus=0
 rows=[]
+x=[35,120,215,120,215,305,396,485,621,759,354,320]
+y=[141,84,28,235,185,130,185,132,184,78,82,220]
+pt=[0 for i in range(0,1000)]
+for i in range(1000):
+    tem=[0,0]
+    pt[i],=plt.plot(tem[0],tem[1],marker='o')
+route=[[-1] for i in range(1000)]
+def avgcoord(lis,pos):
+    x=0
+    y=0
+    for i in lis:
+        x=pos[i][0]+x
+        y=y+pos[i][1]
+    l=len(lis)
+    return (x/l,y/l)
 def dist(a,b):
     return ((a[0]-b[0])**2+(a[1]-b[1])**2)**0.5
+
+def near(pos):
+    ind=-1
+    m=1000000000000
+    for i in range(len(x)):
+        if(m>((pos[0]-x[i])**2+(pos[1]-y[i])**2)):
+            ind=i
+            m=(pos[0]-x[i])**2+(pos[1]-y[i])**2
+    if(dist(pos,[x[ind],y[ind]])<10):
+        return ind
+    else:
+        return -1
+
 def SortKey(a):
     return a[3]
 def SetDiff(a,b):
@@ -87,25 +116,40 @@ def max_sp(a):
     for i in a:
         if i[3]>speed:
             speed=i[3]
+            if (speed>30):
+                return 40
     return speed
 
 
 def preserve(bus,rows):
     tem=[]
+    unchanged=[]
     for i in bus:
         tmp=[]
         for j in i:
             tmp.append(rows[j])
         if max_sp(tmp)<30:
-            tem.append(i)
+            unchanged.append(bus.index(i))
             continue
         #print tmp
         tem=tem+cluster(tmp)
-    return tem
+    buss=[[] for i in range(len(unchanged)+len(tem))]
+    for i in unchanged:
+        buss[i]=bus[i]
+    for i in tem:
+        for j in range(len(buss)):
+            if buss[j]== []:
+                buss[j]=i
+                break
+            else:
+                continue
+        
+    return buss
     
 
-for i in range(400):
-
+for i in range(500):
+    if(i%100==0):
+        print i
     cur.execute("SELECT * FROM Data_%d ORDER BY Id"%i)
     rows = cur.fetchall()
     rows.sort()
@@ -122,19 +166,26 @@ for i in range(400):
         
         NewBus=cluster(tem)
         rem=[]
+        rep=[]
         ne=[]
+       
         for k in NewBus:
             for l in bus:
                 if l==[] or k==[]:
                     continue
+                 
                 if SetDiff(l,k) == 1:
                     #print l,k
-                    
-                    bus[bus.index(l)]=k
+                    if k in rem:
+                        continue
+                    rep.append(bus.index(l))
                     rem.append(k)
-        for k in rem:
-            if k in NewBus:
-                NewBus.remove(k)
+                    break
+        
+        for k in range(len(rem)):
+            bus[rep[k]]=rem[k]
+        for k in range(len(rem)):
+            NewBus.remove(rem[k])
         for adder in NewBus:
             if adder in bus:
                 continue
@@ -142,10 +193,26 @@ for i in range(400):
     bus=preserve(bus,rows)
     bus.sort()
     temp_bus=[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
+    
+    for j in range(len(temp_bus)):
+        coord=avgcoord(temp_bus[j],pos)
+        #pt[j].set_data(coord[0],coord[1])
+        bstop=near([coord[0],coord[1]])
+        if not(bstop==-1 ) and not(bstop in route[j][-2:]):
+            route[j].append(bstop)
+            
+    #plt.pause(0.0001)
     #print bus
-    print len(temp_bus)
+    #print len(temp_bus)
+    
             
 bus.sort()
 bus=[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
 print(len(bus))
-    
+for i in route[:len(bus)]:
+    print i    
+for i in route[:len(bus)]:
+    for j in range(1,len(i)):
+        pt[j].set_data(x[i[j]],y[i[j]])
+    plt.pause(10)
+        
