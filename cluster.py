@@ -6,7 +6,7 @@ import matplotlib.animation as animation
 im = plt.imread('testmap.png')
 implot = plt.imshow(im)
 pt=[0 for i in range(1000)]
-
+bus_pointer=0
 con=connect('database/database.db')
 cur=con.cursor()
 pos=[[-1,-1] for i in range(1000)]
@@ -124,6 +124,8 @@ def max_sp(a):
 def preserve(bus,rows):
     tem=[]
     unchanged=[]
+    changed=[]
+    new=[]
     for i in bus:
         tmp=[]
         for j in i:
@@ -132,10 +134,20 @@ def preserve(bus,rows):
             unchanged.append(bus.index(i))
             continue
         #print tmp
-        tem=tem+cluster(tmp)
-    buss=[[] for i in range(len(unchanged)+len(tem))]
+        t=cluster(tmp)
+        if(len(t)==1):
+            changed.append(bus.index(i))
+            new.append(t[0])
+        if(len(t)>1):
+            changed.append(bus.index(i))
+            new.append(t[0])
+            tem=tem+t[1:]
+    buss=[[] for i in range(len(unchanged)+len(changed)+len(tem)+10)]
     for i in unchanged:
         buss[i]=bus[i]
+    for i in range(len(changed)):
+        buss[changed[i]]=new[i]
+           
     for i in tem:
         for j in range(len(buss)):
             if buss[j]== []:
