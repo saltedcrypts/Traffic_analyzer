@@ -217,6 +217,7 @@ for i in range(1000):
         # NUMBER OF PEOPLE WHO DEBOARD IS DEPENDANT ON THE STOP -- LAMBDA=AVG NUMBER WHO GET DOWN AT THE STOP                
         deboard_number=int(poissons_rand(12))+4
         print 'deboard', deboard_number
+        deboard_number=deboard_number%14
         for k in range(len(test_points)):
             if (deboard_number<=0):
                 break
@@ -259,12 +260,12 @@ for i in range(1000):
             speed=10+10*random()
         else:
             bus_no=test_points[j][0]
-            if(rtx[bus_no][i%len(rtx[bus_no])]==rtx[bus_no][(i+1)%len(rtx[bus_no])] and rtx[bus_no][i%len(rtx[bus_no])]==rtx[bus_no][(i+1)%len(rtx[bus_no])]):
+            if(rtx[bus_no][i%len(rtx[bus_no])]==rtx[bus_no][(i-1)%len(rtx[bus_no])] and rty[bus_no][i%len(rty[bus_no])]==rty[bus_no][(i-1)%len(rty[bus_no])]):
                 #print 'stopped'
                 direct=int(ceil(4*random()))
                 speed=2+1*random()
             else:                                                                                    
-                direct=get_dir(rtx[bus_no][(i-1)%len(rtx[bus_no])],rty[bus_no][(i-1)%len(rtx[bus_no])],rtx[bus_no][i%len(rtx[bus_no])],rty[bus_no][i%len(rtx[bus_no])])
+                direct=get_dir(rtx[bus_no][(i-1)%len(rtx[bus_no])],rty[bus_no][(i-1)%len(rty[bus_no])],rtx[bus_no][i%len(rtx[bus_no])],rty[bus_no][i%len(rty[bus_no])])
                 speed=50+10*random()
         #pt[j].set_data(tem[0]+random()*((-1)**j),tem[1]+random()*((-1)**j))
         street=str(pix[int(tem[0]),int(tem[1])])
