@@ -170,6 +170,7 @@ for i in range(1000):
         # NUMBER OF PEOPLE WHO DEBOARD IS DEPENDANT ON THE STOP -- LAMBDA=AVG NUMBER WHO GET DOWN AT THE STOP                
         deboard_number=int(poissons_rand(12))+4
         print 'deboard', deboard_number
+        deboard_number=deboard_number%10
         for k in range(len(test_points)):
             if (deboard_number<=0):
                 break
