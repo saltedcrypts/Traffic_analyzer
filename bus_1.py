@@ -18,7 +18,7 @@ from math import *
 from direction import *
 ## --------------------------------------------------##
 
-con=connect('database/database.db')
+con=connect('database/DatabaseAlt.db')
 cur=con.cursor()
 im = plt.imread('testmap.png')
 img = Image.open('testmap.png')
@@ -143,16 +143,9 @@ for i in range(len(test_points)):
     pt[i],=plt.plot(tem[0],tem[1],marker='o')
 plt.scatter(x,y)
 ptbus,=plt.plot(rtx[0][0],rty[0][0],marker='o')
-
+cur.execute("CREATE TABLE Data(ItterID INT,Id INT, posx FLOAT, posy FLOAT, speed FLOAT, Direction INT,Street TEXT )")
+cur.execute("CREATE INDEX index_name ON Data(ItterID)")
 for i in range(1000):
-    
-    try:
-        cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT, speed FLOAT, Direction INT,Street TEXT )"%i)
-    except:
-        cur.execute("DROP TABLE IF EXISTS Data_%d"%i)
-        cur.execute("CREATE TABLE Data_%d(Id INT, posx FLOAT, posy FLOAT , speed FLOAT, Direction INT, Street TEXT)"%i)
-        pass
-    
     i1=i%len(rtx[0])
     if(i1>0 and [rtx[0][i1],rty[0][i1]]==[rtx[0][i1-1],rty[0][i1-1]] and not([rtx[0][i1-2],rty[0][i1-2]]==[rtx[0][i1],rty[0][i1]])):
         n=near([rtx[0][i1],rty[0][i1]])
@@ -270,7 +263,7 @@ for i in range(1000):
                 speed=50+10*random()
         #pt[j].set_data(tem[0]+random()*((-1)**j),tem[1]+random()*((-1)**j))
         street=str(pix[int(tem[0]),int(tem[1])])
-        cur.execute('INSERT INTO Data_%d VALUES(%d,%f,%f,%f,%d,"%s")'%(i,j,tem[0],tem[1],speed,direct,street))
+        cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(i,j,tem[0],tem[1],speed,direct,street))
         
     
     plt.pause(0.001)
@@ -322,6 +315,6 @@ for i in range(1000):
         point_c[pnt][0]=x_init
         point_c[pnt][1]=y_init
         street=str(pix[int(x_init),int(y_init)])
-        cur.execute('INSERT INTO Data_%d VALUES(%d,%f,%f,%f,%d,"%s")'%(it,random_id[pnt],x_init,y_init,50+10*random(),int(ceil(4*random())),street))
+        cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(it,random_id[pnt],x_init,y_init,50+10*random(),int(ceil(4*random())),street))
     plt.pause(0.001)        
 #plt.show()

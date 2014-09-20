@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 im = plt.imread('testmap.png')
 implot = plt.imshow(im)
-pt=[0 for i in range(1000)]
+pt1=[0 for i in range(1000)]
 for i in range(1000):
     pt[i],=plt.plot(0,0,marker='o')
 con=connect('database/database.db')
@@ -16,7 +16,7 @@ for i in range(895,901):
     rows = cur.fetchall()
     
     for j in range(len(rows)):
-        pt[j].set_data(rows[j][1]+random()*((-1)**j),rows[j][2]+random()*((-1)**j))
+        pt1[j].set_data(rows[j][1]+random()*((-1)**j),rows[j][2]+random()*((-1)**j))
     
     plt.pause(0.0000001)
         

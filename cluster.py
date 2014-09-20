@@ -7,10 +7,13 @@ global git
 git=0
 im = plt.imread('testmap.png')
 implot = plt.imshow(im)
-pt=[0 for i in range(1000)]
+con1=connect('database/BusRoute.db')
+con2=connect('database/BusPos.db')      
 bus_pointer=0
 con=connect('database/database.db')
 cur=con.cursor()
+cur1=con1.cursor()
+cur2=con2.cursor()
 pos=[[-1,-1] for i in range(1000)]
 stationx=[35,120,215,120,215,305,396,485,621,759,354,320]
 stationy=[141,84,28,235,185,130,185,132,184,78,82,220]
@@ -20,10 +23,8 @@ new_bus=0
 rows=[]
 x=[35,120,215,120,215,305,396,485,621,759,354,320]
 y=[141,84,28,235,185,130,185,132,184,78,82,220]
-pt=[0 for i in range(0,1000)]
-for i in range(1000):
-    tem=[0,0]
-    pt[i],=plt.plot(tem[0],tem[1],marker='o')
+
+
 route=[[-1] for i in range(1000)]
 def avgcoord_row_list(pos):
     x=0
@@ -165,13 +166,25 @@ def preserve(bus,rows):
     for i in unchanged:
         buss.append(bus[i])
     return buss
-    
-
+'''    
+pt1=[0 for i in range(1000)]
+for i in range(1000):
+    pt1[i],=plt.plot(0,0,marker='o')
+pt=[0 for i in range(0,1000)]
+for i in range(1000):
+    pt[i],=plt.plot(0,0,marker='*')'''
+##############################################################################################################################################################
+cur2.execute("CREATE TABLE BusPos(Id INT, posx FLOAT, posy FLOAT)")
+cur1.execute("CREATE TABLE BusRote(Id INT, posx FLOAT, posy FLOAT)")
+#############################################################################################################################################################
 for i in range(950):
-    #print i
+    if (i%50==0):
+        print i
     cur.execute("SELECT * FROM Data_%d ORDER BY Id"%i)
     rows = cur.fetchall()
     rows.sort()
+    #for j in range(len(rows)):
+        #pt1[j].set_data(rows[j][1]+random()*((-1)**j),rows[j][2]+random()*((-1)**j))
     for j in rows:
         pos[j[0]]=[j[1],j[2]]
     
@@ -225,17 +238,22 @@ for i in range(950):
         bstop=near([coord[0],coord[1]])
         if bstop==4 and temp_bus[j][1]==1:
             print '-> ',bstop,temp_bus[j][1],i,rows[temp_bus[j][0][0]][4]
-        if not(bstop==-1 ) and not(bstop in route[temp_bus[j][1]][-4:]):
+        if not(bstop==-1 ) and not(bstop in route[temp_bus[j][1]]):
             route[temp_bus[j][1]].append(bstop)
     bus=temp_bus        
-'''    #plt.pause(0.0001)
+    #plt.pause(0.0001)
     for srt_i in range(len(bus)):
         bus[srt_i][0].sort()
-    for iter_prnt in bus:
-        print iter_prnt,rows[iter_prnt[0][0]][3]
+    #for iter_prnt in bus:
+        #print iter_prnt,rows[iter_prnt[0][0]][3]
         #print route[iter_prnt[1]],near(avgcoord(iter_prnt[0],pos))
-    #temp_input=raw_input()
-    #print len(temp_bus)'''
+    cbus=[avgcoord(k[0],pos) for k in bus]
+    for k in range(len(cbus)):
+        cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(k,cbus[k][0],cbus[k][1]))
+        #pt[k].set_data(cbus[k][0],cbus[k][1])
+        
+        
+    plt.pause(0.001)
     
 bus.sort()
 bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
