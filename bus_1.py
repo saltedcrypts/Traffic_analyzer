@@ -18,13 +18,16 @@ from math import *
 from direction import *
 ## --------------------------------------------------##
 
-con=connect('database/DatabaseAlt.db')
+con=connect('database/DatabaseAlt_new.db')
 cur=con.cursor()
 im = plt.imread('testmap.png')
 img = Image.open('testmap.png')
 pix = img.load()
 implot = plt.imshow(im)
 print img.size
+
+lambda_bus=[10,12,11,13,15,13,16,19,17,11,12,17,10,11,14,9]
+lambda_stop=[10,12,17,15,16,14,14,19,17,10,11,14,9,11,13,14,10,7,15]
 
 ## var STORES THE LIST OF PIXELS WHICH CONSTITUTE TH ROAD
 var=[(218, 37, 91), (244, 129, 23), (255, 242, 0),(153, 217, 234),(218, 7, 29),
@@ -76,7 +79,7 @@ bus3=[[350,73],[472,4],[498,45],[-1,0],[523,88],[480,110],[490,130],[-1,0],[545,
 bus4=[[315,211],[305,217],[255,133],[350,70],[-1,0],[474,2],[498,45],[-1,0],[560,150],[-1,0],[590,195],[520,237],[-1,0],[460,270],[405,180],[-1,0],[395,165],[315,211],[-1,0]]
 pos=[[44,152],[127,103],[349,89],[315,211]]
 busses=[bus1,bus2,bus3,bus4]
-
+bus_count=[30 for i in range(len(busses))]
 #####    DEFINING AUXILIARY FUNCTIONS
 
 def near(pos):
@@ -131,7 +134,7 @@ for bus in busses:
     rtx.append(routex)
     rty.append(routey)
     
-conn=connect('database/Bus.db')
+conn=connect('database/Bus_new.db')
 with conn:
     curr=conn.cursor()
     curr.execute("CREATE TABLE Bus (id INT,Itter INT,posx FLOAT,posy FLOAT)")
@@ -160,25 +163,27 @@ with con:
             i1=i%len(rtx[it])
             if(i1>0 and [rtx[it][i1],rty[it][i1]]==[rtx[it][i1-1],rty[it][i1-1]] and not([rtx[it][i1-2],rty[it][i1-2]]==[rtx[it][i1],rty[it][i1]])):
                 n=near([rtx[it][i1],rty[it][i1]])
-                board_number=poissons_rand(8);
+                board_number=poissons_rand(lambda_bus[it]);
                 print 'board', board_number
                 # NUMBER OF PEOPLE WHO BOARD IS DEPENDANT ON THE BUS -- LAMBDA=AVG NUMBER WHO BOARD A BUS
                 for k in range(len(test_points)):
-                    if(board_number==0):
+                    if(board_number==0 or bus_count[it]>50):
                         break
                     if(test_points[k][0]==-1 and dist([x[n],y[n]],test_points[k][1])<5 and board_number>0):
                         board_number=board_number-1
                         test_points[k][0]=it
+                        bus_count[it]=bus_count[it]+1
                         brd=brd+1
 
                 # NUMBER OF PEOPLE WHO DEBOARD IS DEPENDANT ON THE STOP -- LAMBDA=AVG NUMBER WHO GET DOWN AT THE STOP                
-                deboard_number=int(poissons_rand(12))+4
+                deboard_number=int(poissons_rand(lambda_stop[n]))+4
                 print 'deboard', deboard_number
-                deboard_number=deboard_number%10
+                deboard_number=deboard_number
                 for k in range(len(test_points)):
-                    if (deboard_number<=0):
+                    if (deboard_number<=0 or bus_count[it]<9):
                         break
                     if(test_points[k][0]==it and deboard_number>0):
+                        bus_count[it]=bus_count[it]-1
                         deboard_number=deboard_number-1
                         dbrd=dbrd+1
                         test_points[k][0]=-1

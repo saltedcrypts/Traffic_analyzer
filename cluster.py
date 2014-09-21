@@ -19,7 +19,7 @@ implot = plt.imshow(im)
 con1=connect('database/BusRoute.db')
 con2=connect('database/BusPos.db')      
 bus_pointer=0
-con=connect('database/DatabaseAlt.db')
+con=connect('database/DatabaseAlt_new.db')
 cur=con.cursor()
 cur1=con1.cursor()
 cur2=con2.cursor()
@@ -32,10 +32,11 @@ new_bus=0
 rows=[]
 x=[35,120,215,120,215,305,396,485,354,320,515,510,570]
 y=[141,84,28,235,185,130,185,132,82,220,230,40,150]
+
 ##################################################################################################################################################
 Rrtx=[[] for i in range(100)]
 Rrty=[[] for i in range(100)]
-conn=connect('database/Bus.db')
+conn=connect('database/Bus_new.db')
 with conn:
     curr=conn.cursor()
     curr.execute("SELECT * FROM Bus ORDER BY id,Itter")
@@ -69,6 +70,18 @@ def avgcoord(lis,pos):
     return (x/l,y/l)
 def dist(a,b):
     return ((a[0]-b[0])**2+(a[1]-b[1])**2)**0.5
+
+def check_sub(l1,l2):
+    for iter_l1 in l1:
+        if(iter_l1 not in l2):
+            return 1
+    return 0
+
+def sub_exists(l1,bs):
+    for i_bs in bs:
+        if check_sub(l1,i_bs[0])==0:
+            return 0
+    return 1
 
 def near(pos):
     ind=-1
@@ -241,7 +254,7 @@ with con,con1,con2:
             rm=[]
             for k in NewBus:
                 for l in bus:
-                    if l==[] or k==[] or test[bus.index(l)]==1:
+                    if l==[] or k==[]:
                         continue
                     
                     if SetDiff(l[0],k) == 1:
@@ -258,7 +271,7 @@ with con,con1,con2:
             for k in range(len(rem)):
                 NewBus.remove(rm[k])
             for adder in NewBus:
-                if adder in bus:
+                if(sub_exists(adder,bus)==0):
                     continue
                 bus.append([adder,git])
                 git=git+1
@@ -282,8 +295,8 @@ with con,con1,con2:
         #plt.pause(0.0001)
         for srt_i in range(len(bus)):
             bus[srt_i][0].sort()
-        #for iter_prnt in bus:
-            #print iter_prnt,rows[iter_prnt[0][0]][3]
+        for iter_prnt in bus:
+            print iter_prnt,rows[iter_prnt[0][0]][3]
             #print route[iter_prnt[1]],near(avgcoord(iter_prnt[0],pos))
         cbus=[avgcoord(k[0],pos) for k in bus]
         screen.blit(background,(0,0))
@@ -296,6 +309,7 @@ with con,con1,con2:
         print len(cbus),' -> ',i
         for k in bus:
             print len(k[0]),k[1]
+            #print k[1],k[0]
             
         for k in range(len(cbus)):
             screen.blit(BusPoint,(cbus[k][0],cbus[k][1]))
