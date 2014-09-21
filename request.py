@@ -28,22 +28,22 @@ def near(pos,lst,ign=-1):
     return ind
 
 def get(bus,stat):
-    print bus,stat,BusPos
+    #print bus,stat,BusPos
     near1=near(BusPos[bus],BusStop[bus])
     near2=near(BusPos[bus],BusStop[bus],near1)
     time=0
-    print near1,near2,BusPos[bus]
+    #print near1,near2,BusPos[bus]
     if BusStop[bus].index(near1) < BusStop[bus].index(near2):
         start=near1
     else:
         start=near2
-    time=0
+    time_val=0
     mod_len=len(BusStop[bus])
     start=(start+1)%mod_len
     while not(start+1==stat):
         cur=BusStop[bus][start-1]
         nxt=BusStop[bus][start]
-        time=time+Time[cur][nxt]
+        time_val=time_val+Time[cur][nxt]
         start=(start+1)%mod_len
     return time
     
@@ -78,14 +78,16 @@ def request(stat1,stat2):
     minTime=1000000000000
     ind=-1
     for i in possible:
-        start=BusStop[i].index(stat1)
+        mod_len=len(BusStop[i])
+        start=(BusStop[i].index(stat1)+1)%mod_len
         stop=BusStop[i].index(stat2)
         time_val=0
         while not(start==stop):
+            #print 'looping'
             cur=BusStop[i][start]
-            nxt=BusStop[i][start+1]
+            nxt=BusStop[i][(start-1)%mod_len]
             time_val=time_val+Time[cur][nxt]
-            start=start+1
+            start=(start+1)%mod_len
         time_val=time_val+get(i,stat1)
         if time_val<minTime:
             minTime=time_val

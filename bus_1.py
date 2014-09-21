@@ -8,22 +8,19 @@ print pix[10,10] #Get the RGBA Value of the a pixel of an image
 from PIL import Image
 import math
 import random as r
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 from sqlite3 import *
 import sys
 from random import *
-import matplotlib.animation as animation
 from math import *
 from direction import *
 ## --------------------------------------------------##
 
 con=connect('database/DatabaseAlt_new.db')
 cur=con.cursor()
-im = plt.imread('testmap.png')
+#im = plt.imread('testmap.png')
 img = Image.open('testmap.png')
 pix = img.load()
-implot = plt.imshow(im)
+#implot = plt.imshow(im)
 print img.size
 
 lambda_bus=[10,12,11,13,15,13,16,19,17,11,12,17,10,11,14,9]
@@ -80,6 +77,10 @@ bus4=[[315,211],[305,217],[255,133],[350,70],[-1,0],[474,2],[498,45],[-1,0],[560
 pos=[[44,152],[127,103],[349,89],[315,211]]
 busses=[bus1,bus2,bus3,bus4]
 bus_count=[30 for i in range(len(busses))]
+
+bus_passenger_list=[[j for j in range(i*30,(i+1)*30)] for i in range(len(busses))]
+station_people=[[[j for j in range(i*20+len(busses)*30,(i+1)*20 + len(busses)*30 )] for i in range(len(x))]]
+
 #####    DEFINING AUXILIARY FUNCTIONS
 
 def near(pos):
@@ -147,40 +148,29 @@ with conn:
 brd=0
 dbrd=0
 random_id=[]
-next_index=290
+next_index=len(test_points)
 pt=[0 for i in range(0,len(test_points))]
 for i in range(len(test_points)):
     tem=post(i)
     #print tem
-    pt[i],=plt.plot(tem[0],tem[1],marker='o')
-plt.scatter(x,y)
-ptbus,=plt.plot(rtx[0][0],rty[0][0],marker='o')
+    #pt[i],=plt.plot(tem[0],tem[1],marker='o')
+#plt.scatter(x,y)
+#ptbus,=plt.plot(rtx[0][0],rty[0][0],marker='o')
 cur.execute("CREATE TABLE Data(ItterID INT,Id INT, posx FLOAT, posy FLOAT, speed FLOAT, Direction INT,Street TEXT )")
 cur.execute("CREATE INDEX index_name ON Data(ItterID)")
 with con:    
     for i in range(1000):
+        print "iteration number",i
         for it in range(len(busses)):
             i1=i%len(rtx[it])
             if(i1>0 and [rtx[it][i1],rty[it][i1]]==[rtx[it][i1-1],rty[it][i1-1]] and not([rtx[it][i1-2],rty[it][i1-2]]==[rtx[it][i1],rty[it][i1]])):
                 n=near([rtx[it][i1],rty[it][i1]])
-                board_number=poissons_rand(lambda_bus[it]);
-                print 'board', board_number
-                # NUMBER OF PEOPLE WHO BOARD IS DEPENDANT ON THE BUS -- LAMBDA=AVG NUMBER WHO BOARD A BUS
-                for k in range(len(test_points)):
-                    if(board_number==0 or bus_count[it]>50):
-                        break
-                    if(test_points[k][0]==-1 and dist([x[n],y[n]],test_points[k][1])<5 and board_number>0):
-                        board_number=board_number-1
-                        test_points[k][0]=it
-                        bus_count[it]=bus_count[it]+1
-                        brd=brd+1
-
                 # NUMBER OF PEOPLE WHO DEBOARD IS DEPENDANT ON THE STOP -- LAMBDA=AVG NUMBER WHO GET DOWN AT THE STOP                
-                deboard_number=int(poissons_rand(lambda_stop[n]))+4
-                print 'deboard', deboard_number
-                deboard_number=deboard_number
+                deboard_number=int(poissons_rand(lambda_stop[n]))
+                #print 'deboard', deboard_number
+                #deboard_number=deboard_number
                 for k in range(len(test_points)):
-                    if (deboard_number<=0 or bus_count[it]<9):
+                    if (deboard_number<=0 or bus_count[it]<16):
                         break
                     if(test_points[k][0]==it and deboard_number>0):
                         bus_count[it]=bus_count[it]-1
@@ -193,13 +183,13 @@ with con:
                         ar=math.ceil(random()*20)-10
                         br=math.ceil(random()*20)-10
                 
-                        pt_rand,=plt.plot(test_points[k][1][0]+ar,test_points[k][1][1]+br,marker='o')
+                        #pt_rand,=plt.plot(test_points[k][1][0]+ar,test_points[k][1][1]+br,marker='o')
                         track.append([])
                         lpx.append(0)
                         lpy.append(0)
                         for filler in range(0,150):
                                 track[-1].append((-1,-1))
-                        point_l.append(pt_rand)
+                        #point_l.append(pt_rand)
                         point_c.append([test_points[k][1][0]+ar,test_points[k][1][1]+br])
                         track[-1].append((test_points[k][1][0]+ar,test_points[k][1][1]+br))
                         if(len(point_l)>1000):
@@ -208,9 +198,23 @@ with con:
                             track=track[-1000:]
                             lpx=lpx[-1000:]
                             lpy=lpx[-1000:]
+                board_number=poissons_rand(lambda_bus[it]);
+                #print 'board', board_number
+                # NUMBER OF PEOPLE WHO BOARD IS DEPENDANT ON THE BUS -- LAMBDA=AVG NUMBER WHO BOARD A BUS
+                for k in range(len(test_points)):
+                    if(board_number<=0 or bus_count[it]>50):
+                        break
+                    if(test_points[k][0]==-1 and dist([x[n],y[n]],test_points[k][1])<5 and board_number>0):
+                        board_number=board_number-1
+                        test_points[k][0]=it
+                        #bus_passenger_list[it].append(k)
+                        bus_count[it]=bus_count[it]+1
+                        brd=brd+1
+
+
             #ptbus.set_data(rtx[0][i1],rty[0][i1])
             pos[it]=[rtx[it][i1],rty[it][i1]]                      
-        
+            print bus_count[it]
         for j in range(len(test_points)):
             tem=post(j)
             if tem==0:
@@ -285,5 +289,5 @@ with con:
             street=str(pix[int(x_init),int(y_init)])
             cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(it,random_id[pnt],x_init-1+2*random(),y_init-1+2*random(),50+10*random(),int(ceil(4*random())),street))
         #plt.pause(0.001)
-        con.commit()
+        #con.commit()
     #plt.show()

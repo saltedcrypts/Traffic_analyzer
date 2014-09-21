@@ -19,11 +19,11 @@ implot = plt.imshow(im)
 con1=connect('database/BusRoute.db')
 con2=connect('database/BusPos.db')      
 bus_pointer=0
-con=connect('database/DatabaseAlt.db')
+con=connect('database/DatabaseAlt_new.db')
 cur=con.cursor()
 cur1=con1.cursor()
 cur2=con2.cursor()
-pos=[[-1,-1] for i in range(1000)]
+pos=[[-1,-1] for i in range(1500)]
 stationx=[35,120,215,120,215,305,396,485,621,759,354,320]
 stationy=[141,84,28,235,185,130,185,132,184,78,82,220]
 bus=[]
@@ -36,7 +36,7 @@ y=[141,84,28,235,185,130,185,132,82,220,230,40,150]
 ##################################################################################################################################################
 Rrtx=[[] for i in range(100)]
 Rrty=[[] for i in range(100)]
-conn=connect('database/Bus.db')
+conn=connect('database/Bus_new.db')
 with conn:
     curr=conn.cursor()
     curr.execute("SELECT * FROM Bus ORDER BY id,Itter")
@@ -115,14 +115,18 @@ def cluster(a):
     minspeed=30
     thres=5
     a=[i for i in a if i[3]>minspeed]
+    for i in a:
+        #print i[0],':',i[3],
+        pass
+    #print ''
     adj_list=[[] for j in range(len(a))]
     for i in a:
         for j in a:
             if i==j:
                 continue
             if dist([i[1],i[2]],[j[1],j[2]])<7 and i[4]==j[4] and abs(i[3]-j[3])<10:
-                
                 adj_list[a.index(i)].append(a.index(j))
+
     # RUNNING DFS TO IDENTIFY THE CLUSTER
     visited=[0 for i in range(len(a))]
     stack=[]
@@ -171,6 +175,11 @@ def max_sp(a):
                 return 40
     return speed
 
+def median_sp(a):
+    if(len(a))==0:
+        return 0
+    a.sort(key=SortKey)
+    return a[len(a)/2][3]
 
 def preserve(bus,rows):
     global git
@@ -183,11 +192,11 @@ def preserve(bus,rows):
         tmp=[]
         for j in i[0]:
             tmp.append(rows[j])
-        if max_sp(tmp)<30 or not(near(avgcoord_row_list(tmp))==-1):
+        if avg(tmp[:])<20 or not(near(avgcoord_row_list(tmp))==-1):
             unchanged.append(bus.index(i))
             continue
         #print tmp
-        t=cluster(tmp)
+        t=cluster(tmp[:])
         if(len(t)==1):
             buss.append([t[0],i[1]])
         elif(len(t)>1):
@@ -237,8 +246,6 @@ with con,con1,con2:
             
         for j in range(len(bus)):
             tm=[rows[k] for k in bus[j][0]]
-            if avg(tm)<30:
-                test[j]=1
         for j in range(len(stationx)):
             tem=[]
             for k in rows:
@@ -246,8 +253,8 @@ with con,con1,con2:
                     #print k[0],j
                     
                     tem.append(k)
-            
-            NewBus=cluster(tem)
+            NewBus=cluster(tem[:])
+            #print NewBus
             rem=[]
             rep=[]
             ne=[]
@@ -275,7 +282,7 @@ with con,con1,con2:
                     continue
                 bus.append([adder,git])
                 git=git+1
-        #bus=preserve(bus,rows)
+        bus=preserve(bus,rows)
         bus.sort()
         temp_bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
         
@@ -298,6 +305,7 @@ with con,con1,con2:
         for iter_prnt in bus:
             print iter_prnt,rows[iter_prnt[0][0]][3]
             #print route[iter_prnt[1]],near(avgcoord(iter_prnt[0],pos))
+            pass
         cbus=[avgcoord(k[0],pos) for k in bus]
         screen.blit(background,(0,0))
         for j in range(len(rows)):
@@ -328,15 +336,19 @@ with con,con1,con2:
         con.commit()
         #print "1"
         #raw_input()
+        print ''
+        print ''
+
         
     bus.sort()
     bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
 
     print(len(bus))
-    for i in route[:len(bus)]:
-        print i    
-    for i in route[:10]:
-        for j in range(1,len(i)):
+    for iterat in route[:len(bus)]:
+        print iterat    
+    for iterat in route[:10]:
+        for j in range(1,len(iterat)):
             #pt[j].set_data(x[i[j]],y[i[j]])
         #plt.pause(10d
             pass
+
