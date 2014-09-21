@@ -272,7 +272,7 @@ with con:
                     speed=50+10*random()
             #pt[j].set_data(tem[0]+random()*((-1)**j),tem[1]+random()*((-1)**j))
             street=str(pix[int(tem[0]),int(tem[1])])
-            cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(i,j,tem[0]-5+10*random(),tem[1]-5+10*random()*,speed,direct,street))
+            cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(i,j,tem[0]-5+10*random(),tem[1]-5+10*random(),speed,direct,street))
             
             
         

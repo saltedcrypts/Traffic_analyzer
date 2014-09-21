@@ -33,38 +33,20 @@ rows=[]
 x=[35,120,215,120,215,305,396,485,621,759,354,320]
 y=[141,84,28,235,185,130,185,132,184,78,82,220]
 ##################################################################################################################################################
-Rbus1=[[38,145],[126,96],[-1,0],[220,37],[-1,0],[248,22],[309,125],[-1,0],[350,191],[315,215],[-1,0],[263,243],[226,179],[-1,0],[212,160],[64,246],[15,160],[38,145],[-1,0]]
-Rbus2=[[126,92],[220,37],[-1,0],[248,22],[298,105],[341,81],[-1,0],[393,166],[315,211],[-1,0],[215,271],[112,100],[126,92],[-1,0]]
-Rbus3=[[349,89],[480,9],[532,91],[682,7],[784,93],[710,158],[617,44],[401,172],[348,89]]
-Rbusses=[Rbus1,Rbus2,Rbus3]
-Rrtx=[]
-Rrty=[]
-for Rbus in Rbusses:
-    Rroutex=[]
-    Rroutey=[]
-    for i in range(1,len(Rbus)):
-        if(Rbus[i][0]==-1):
-            Rtemx=[Rbus[i-1][0]]*5
-            Rtemy=[Rbus[i-1][1]]*5
-            Rroutex=Rroutex+Rtemx
-            Rroutey=Rroutey+Rtemy
-            Rbus[i]=Rbus[i-1]
-            continue
-            
-        init=Rbus[i-1]
-        fin=Rbus[i]
-        dx=(fin[0]-init[0])
-        dy=(fin[1]-init[1])
-        mag=(dx**2+dy**2)**0.5
-        s=int(5*random())+3
-        dx=(dx/mag)*s
-        dy=(dy/mag)*s
-        Rtemx=[init[0]+i*dx for i in range(0,int(mag/s))]
-        Rtemy=[init[1]+i*dy for i in range(0,int(mag/s))]
-        Rroutex=Rroutex+Rtemx
-        Rroutey=Rroutey+Rtemy
-    Rrtx.append(Rroutex)
-    Rrty.append(Rroutey)
+Rrtx=[[] for i in range(100)]
+Rrty=[[] for i in range(100)]
+conn=connect('database/Bus.db')
+with conn:
+    curr=conn.cursor()
+    curr.execute("SELECT * FROM Bus ORDER BY id,Itter")
+    
+    Rbus=curr.fetchall()
+    for i in Rbus:
+        Rrtx[i[0]].append(i[2])
+        Rrty[i[0]].append(i[3])
+Rrtx=[i for i in Rrtx if not(i==[])]
+Rrty=[i for i in Rrty if not(i==[])]
+    
 ##################################################################################################################################################
 
 route=[[-1] for i in range(1000)]
@@ -301,8 +283,8 @@ with con,con1,con2:
             #print j
             #pt1[j].set_data(rows[j][2]+random()*((-1)**j),rows[j][3]+random()*((-1)**j))
             screen.blit(dot,(rows[j][1]+5*random()*((-1)**j),rows[j][2]+5*random()*((-1)**j)))
-        for j in range(len(Rbusses)):
-            screen.blit(RealBusPoint,(Rrtx[j][i],Rrty[j][i]))
+        for j in range(len(Rrtx)):
+            screen.blit(RealBusPoint,(Rrtx[j][i%len(Rrtx[j])],Rrty[j][i%len(Rrtx[j])]))
             
         for k in range(len(cbus)):
             screen.blit(BusPoint,(cbus[k][0],cbus[k][1]))
