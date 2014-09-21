@@ -130,12 +130,13 @@ for bus in busses:
     rtx.append(routex)
     rty.append(routey)
     
-conn=connect('database/BusRoute.db')
-curr=conn.cursor()
-curr.execute("CREATE TABLE Bus (id INT,Itter INT,posx FLOAT,posy FLOAT)")
-for i in range(len(busses)):
-    for j in range(len(rtx[i])):
-        curr.execute("INSERT INTO Bus Values(%d,%d,%f,%f)"%(i,j,rtx[i][j],rty[i][j]))
+conn=connect('database/Bus.db')
+with conn:
+    curr=conn.cursor()
+    curr.execute("CREATE TABLE Bus (id INT,Itter INT,posx FLOAT,posy FLOAT)")
+    for i in range(len(busses)):
+        for j in range(len(rtx[i])):
+            curr.execute("INSERT INTO Bus Values(%d,%d,%f,%f)"%(i,j,rtx[i][j],rty[i][j]))
         
 
 ##########################################################################################################################################################
@@ -271,7 +272,7 @@ with con:
                     speed=50+10*random()
             #pt[j].set_data(tem[0]+random()*((-1)**j),tem[1]+random()*((-1)**j))
             street=str(pix[int(tem[0]),int(tem[1])])
-            cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(i,j,tem[0],tem[1],speed,direct,street))
+            cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(i,j,tem[0]-5+10*random(),tem[1]-5+10*random()*,speed,direct,street))
             
             
         
@@ -324,7 +325,7 @@ with con:
             point_c[pnt][0]=x_init
             point_c[pnt][1]=y_init
             street=str(pix[int(x_init),int(y_init)])
-            cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(it,random_id[pnt],x_init,y_init,50+10*random(),int(ceil(4*random())),street))
+            cur.execute('INSERT INTO Data VALUES(%d,%d,%f,%f,%f,%d,"%s")'%(it,random_id[pnt],x_init-5+10*random(),y_init-5+10*random(),50+10*random(),int(ceil(4*random())),street))
         plt.pause(0.001)
         con.commit()
     #plt.show()
