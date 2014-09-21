@@ -287,7 +287,7 @@ with con,con1,con2:
             screen.blit(dot,(rows[j][1]+5*random()*((-1)**j),rows[j][2]+5*random()*((-1)**j)))
         for j in range(len(Rrtx)):
             screen.blit(RealBusPoint,(Rrtx[j][i%len(Rrtx[j])],Rrty[j][i%len(Rrtx[j])]))
-            
+        print len(cbus),' -> ',i   
         for k in range(len(cbus)):
             screen.blit(BusPoint,(cbus[k][0],cbus[k][1]))
             cur2.execute("UPDATE BusPos SET posx=%f , posy=%f WHERE Id=%d"%(cbus[k][0],cbus[k][1],k))
