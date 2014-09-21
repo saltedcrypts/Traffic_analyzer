@@ -19,7 +19,7 @@ implot = plt.imshow(im)
 con1=connect('database/BusRoute.db')
 con2=connect('database/BusPos.db')      
 bus_pointer=0
-con=connect('database/database.db')
+con=connect('database/DatabaseAlt.db')
 cur=con.cursor()
 cur1=con1.cursor()
 cur2=con2.cursor()
@@ -107,7 +107,7 @@ def cluster(a):
         for j in a:
             if i==j:
                 continue
-            if dist([i[1],i[2]],[j[1],j[2]])<5 and i[4]==j[4] and abs(i[3]-j[3])<10:
+            if dist([i[1],i[2]],[j[1],j[2]])<12 and i[4]==j[4] and abs(i[3]-j[3])<10:
                 
                 adj_list[a.index(i)].append(a.index(j))
     # RUNNING DFS TO IDENTIFY THE CLUSTER
@@ -200,18 +200,20 @@ for i in range(1000):
 ##############################################################################################################################################################
 try:
     cur2.execute("CREATE TABLE BusPos(Id INT, posx FLOAT, posy FLOAT)")
-    cur1.execute("CREATE TABLE BusRote(Id INT, posx FLOAT, posy FLOAT)")
+    cur1.execute("CREATE TABLE BusRoute(Id INT, Route TEXT)")
 except:
     pass
 #############################################################################################################################################################
 with con,con1,con2:
     for i in range(50):
         cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(i,-1,-1))
+        cur1.execute('INSERT INTO BusRoute VALUES(%d,"%s")'%(i,''))
     for i in range(950):
         if (i%50==0):
             print i
-        cur.execute("SELECT * FROM Data_%d ORDER BY Id"%i)
+        cur.execute("SELECT * FROM Data WHERE ItterID = %d ORDER BY Id"%i)
         rows = cur.fetchall()
+        rows=[j[1:] for j in rows]
         rows.sort()
         #for j in range(len(rows)):
             #pt1[j].set_data(rows[j][1]+random()*((-1)**j),rows[j][2]+random()*((-1)**j))
@@ -289,6 +291,7 @@ with con,con1,con2:
         for k in range(len(cbus)):
             screen.blit(BusPoint,(cbus[k][0],cbus[k][1]))
             cur2.execute("UPDATE BusPos SET posx=%f , posy=%f WHERE Id=%d"%(cbus[k][0],cbus[k][1],k))
+            cur1.execute('UPDATE  BusRoute SET Route="%s" WHERE Id=%d'%(str(route[k]),k))
             #pt[k].set_data(cbus[k][0],cbus[k][1])
         
         
