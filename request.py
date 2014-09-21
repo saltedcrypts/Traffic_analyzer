@@ -1,3 +1,4 @@
+from sqlite3 import *
 BusStop=[[1,2,3],[2,5,4,6],[2,6,8]]
 BusPos=[]
 Time=[[1 for i in range(10)] for j in range(10)]
@@ -55,10 +56,13 @@ def request(stat1,stat2):
             minTime=time
             ind=i
     return i
+con=connect('database/BusPos.db')
+cur=con.cursor()
+with con:
+    while True:
+        raw_input("Press any key ")
+        cur.execute("SELECT * FROM BusPos")
+        a=cur.fetchall()
+        print a
         
-while True:
-    stat1=int(raw_input("Input Orignating Station "))
-    stat2=int(raw_input("Input Destination Station "))
-    print request(stat1,stat2)
-    
     

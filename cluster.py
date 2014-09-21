@@ -4,6 +4,15 @@ import sys
 from random import *
 import matplotlib.animation as animation
 global git
+import pygame,sys
+from pygame.locals import *
+pygame.init()
+screen=pygame.display.set_mode((786,293),0,32)
+background=pygame.image.load('testmap.png').convert()
+dot=pygame.image.load('download.png').convert_alpha()
+BusPoint=pygame.image.load('bus.png').convert_alpha()
+RealBusPoint=pygame.image.load('real.gif').convert_alpha()
+screen.blit(background,(0,0))
 git=0
 im = plt.imread('testmap.png')
 implot = plt.imshow(im)
@@ -23,7 +32,40 @@ new_bus=0
 rows=[]
 x=[35,120,215,120,215,305,396,485,621,759,354,320]
 y=[141,84,28,235,185,130,185,132,184,78,82,220]
-
+##################################################################################################################################################
+Rbus1=[[38,145],[126,96],[-1,0],[220,37],[-1,0],[248,22],[309,125],[-1,0],[350,191],[315,215],[-1,0],[263,243],[226,179],[-1,0],[212,160],[64,246],[15,160],[38,145],[-1,0]]
+Rbus2=[[126,92],[220,37],[-1,0],[248,22],[298,105],[341,81],[-1,0],[393,166],[315,211],[-1,0],[215,271],[112,100],[126,92],[-1,0]]
+Rbus3=[[349,89],[480,9],[532,91],[682,7],[784,93],[710,158],[617,44],[401,172],[348,89]]
+Rbusses=[Rbus1,Rbus2,Rbus3]
+Rrtx=[]
+Rrty=[]
+for Rbus in Rbusses:
+    Rroutex=[]
+    Rroutey=[]
+    for i in range(1,len(Rbus)):
+        if(Rbus[i][0]==-1):
+            Rtemx=[Rbus[i-1][0]]*5
+            Rtemy=[Rbus[i-1][1]]*5
+            Rroutex=Rroutex+Rtemx
+            Rroutey=Rroutey+Rtemy
+            Rbus[i]=Rbus[i-1]
+            continue
+            
+        init=Rbus[i-1]
+        fin=Rbus[i]
+        dx=(fin[0]-init[0])
+        dy=(fin[1]-init[1])
+        mag=(dx**2+dy**2)**0.5
+        s=int(5*random())+3
+        dx=(dx/mag)*s
+        dy=(dy/mag)*s
+        Rtemx=[init[0]+i*dx for i in range(0,int(mag/s))]
+        Rtemy=[init[1]+i*dy for i in range(0,int(mag/s))]
+        Rroutex=Rroutex+Rtemx
+        Rroutey=Rroutey+Rtemy
+    Rrtx.append(Rroutex)
+    Rrty.append(Rroutey)
+##################################################################################################################################################
 
 route=[[-1] for i in range(1000)]
 def avgcoord_row_list(pos):
@@ -174,95 +216,119 @@ pt=[0 for i in range(0,1000)]
 for i in range(1000):
     pt[i],=plt.plot(0,0,marker='*')'''
 ##############################################################################################################################################################
-cur2.execute("CREATE TABLE BusPos(Id INT, posx FLOAT, posy FLOAT)")
-cur1.execute("CREATE TABLE BusRote(Id INT, posx FLOAT, posy FLOAT)")
+try:
+    cur2.execute("CREATE TABLE BusPos(Id INT, posx FLOAT, posy FLOAT)")
+    cur1.execute("CREATE TABLE BusRote(Id INT, posx FLOAT, posy FLOAT)")
+except:
+    pass
 #############################################################################################################################################################
-for i in range(950):
-    if (i%50==0):
-        print i
-    cur.execute("SELECT * FROM Data_%d ORDER BY Id"%i)
-    rows = cur.fetchall()
-    rows.sort()
-    #for j in range(len(rows)):
-        #pt1[j].set_data(rows[j][1]+random()*((-1)**j),rows[j][2]+random()*((-1)**j))
-    for j in rows:
-        pos[j[0]]=[j[1],j[2]]
-    
-    for j in range(len(stationx)):
-        tem=[]
-        for k in rows:
-            if(dist([stationx[j],stationy[j]],pos[k[0]])<20):
-                #print k[0],j
-                
-                tem.append(k)
+with con,con1,con2:
+    for i in range(50):
+        cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(i,-1,-1))
+    for i in range(950):
+        if (i%50==0):
+            print i
+        cur.execute("SELECT * FROM Data_%d ORDER BY Id"%i)
+        rows = cur.fetchall()
+        rows.sort()
+        #for j in range(len(rows)):
+            #pt1[j].set_data(rows[j][1]+random()*((-1)**j),rows[j][2]+random()*((-1)**j))
+        for j in rows:
+            pos[j[0]]=[j[1],j[2]]
         
-        NewBus=cluster(tem)
-        rem=[]
-        rep=[]
-        ne=[]
-        rm=[]
-        for k in NewBus:
-            for l in bus:
-                if l==[] or k==[]:
-                    continue
-                
-                if SetDiff(l[0],k) == 1:
-                    #print l,k
-                    if k in rem:
+        for j in range(len(stationx)):
+            tem=[]
+            for k in rows:
+                if(dist([stationx[j],stationy[j]],pos[k[0]])<20):
+                    #print k[0],j
+                    
+                    tem.append(k)
+            
+            NewBus=cluster(tem)
+            rem=[]
+            rep=[]
+            ne=[]
+            rm=[]
+            for k in NewBus:
+                for l in bus:
+                    if l==[] or k==[]:
                         continue
-                    rep.append(bus.index(l))
-                    rem.append([k,l[1]])
-                    rm.append(k)
-                    break
+                    
+                    if SetDiff(l[0],k) == 1:
+                        #print l,k
+                        if k in rem:
+                            continue
+                        rep.append(bus.index(l))
+                        rem.append([k,l[1]])
+                        rm.append(k)
+                        break
+            
+            for k in range(len(rem)):
+                bus[rep[k]]=rem[k]
+            for k in range(len(rem)):
+                NewBus.remove(rm[k])
+            for adder in NewBus:
+                if adder in bus:
+                    continue
+                bus.append([adder,git])
+                git=git+1
+        bus=preserve(bus,rows)
+        bus.sort()
+        temp_bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
         
-        for k in range(len(rem)):
-            bus[rep[k]]=rem[k]
-        for k in range(len(rem)):
-            NewBus.remove(rm[k])
-        for adder in NewBus:
-            if adder in bus:
+        for j in range(len(temp_bus)):
+            coord=avgcoord(temp_bus[j][0],pos)
+            #print coord
+            #pt[j].set_data(coord[0],coord[1])
+            tm=[rows[k] for k in temp_bus[j][0]]
+            if(avg(tm)>30):
                 continue
-            bus.append([adder,git])
-            git=git+1
-    bus=preserve(bus,rows)
+            bstop=near([coord[0],coord[1]])
+            if bstop==4 and temp_bus[j][1]==1:
+                print '-> ',bstop,temp_bus[j][1],i,rows[temp_bus[j][0][0]][4]
+            if not(bstop==-1 ) and not(bstop in route[temp_bus[j][1]]):
+                route[temp_bus[j][1]].append(bstop)
+        bus=temp_bus        
+        #plt.pause(0.0001)
+        for srt_i in range(len(bus)):
+            bus[srt_i][0].sort()
+        #for iter_prnt in bus:
+            #print iter_prnt,rows[iter_prnt[0][0]][3]
+            #print route[iter_prnt[1]],near(avgcoord(iter_prnt[0],pos))
+        cbus=[avgcoord(k[0],pos) for k in bus]
+        screen.blit(background,(0,0))
+        for j in range(len(rows)):
+            #print j
+            #pt1[j].set_data(rows[j][2]+random()*((-1)**j),rows[j][3]+random()*((-1)**j))
+            screen.blit(dot,(rows[j][1]+5*random()*((-1)**j),rows[j][2]+5*random()*((-1)**j)))
+        for j in range(len(Rbusses)):
+            screen.blit(RealBusPoint,(Rrtx[j][i],Rrty[j][i]))
+            
+        for k in range(len(cbus)):
+            screen.blit(BusPoint,(cbus[k][0],cbus[k][1]))
+            cur2.execute("UPDATE BusPos SET posx=%f , posy=%f WHERE Id=%d"%(cbus[k][0],cbus[k][1],k))
+            #pt[k].set_data(cbus[k][0],cbus[k][1])
+        
+        
+        
+           
+        time.sleep(0.5)
+        pygame.display.update()   
+        plt.pause(0.001)
+        con1.commit()
+        con2.commit()
+        con.commit()
+        #print "1"
+        #raw_input()
+        
     bus.sort()
-    temp_bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
-    
-    for j in range(len(temp_bus)):
-        coord=avgcoord(temp_bus[j][0],pos)
-        #print coord
-        #pt[j].set_data(coord[0],coord[1])
-        tm=[rows[k] for k in temp_bus[j][0]]
-        if(avg(tm)>30):
-            continue
-        bstop=near([coord[0],coord[1]])
-        if bstop==4 and temp_bus[j][1]==1:
-            print '-> ',bstop,temp_bus[j][1],i,rows[temp_bus[j][0][0]][4]
-        if not(bstop==-1 ) and not(bstop in route[temp_bus[j][1]]):
-            route[temp_bus[j][1]].append(bstop)
-    bus=temp_bus        
-    #plt.pause(0.0001)
-    for srt_i in range(len(bus)):
-        bus[srt_i][0].sort()
-    #for iter_prnt in bus:
-        #print iter_prnt,rows[iter_prnt[0][0]][3]
-        #print route[iter_prnt[1]],near(avgcoord(iter_prnt[0],pos))
-    cbus=[avgcoord(k[0],pos) for k in bus]
-    for k in range(len(cbus)):
-        cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(k,cbus[k][0],cbus[k][1]))
-        #pt[k].set_data(cbus[k][0],cbus[k][1])
-        
-        
-    plt.pause(0.001)
-    
-bus.sort()
-bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
+    bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
 
-print(len(bus))
-for i in route[:len(bus)]:
-    print i    
-for i in route[:10]:
-    for j in range(1,len(i)):
-        #pt[j].set_data(x[i[j]],y[i[j]])
-    #plt.pause(10)
-        pass
+    print(len(bus))
+    for i in route[:len(bus)]:
+        print i    
+    for i in route[:10]:
+        for j in range(1,len(i)):
+            #pt[j].set_data(x[i[j]],y[i[j]])
+        #plt.pause(10d
+            pass
