@@ -33,6 +33,9 @@ rows=[]
 x=[35,120,215,120,215,305,396,485,354,320,515,510,570]
 y=[141,84,28,235,185,130,185,132,82,220,230,40,150]
 
+avg_wait_time=[[0 for i in range(1500)] for j in range(len(x))]
+bus_freq=[0 for i in range(len(x))]
+
 ##################################################################################################################################################
 Rrtx=[[] for i in range(100)]
 Rrty=[[] for i in range(100)]
@@ -220,18 +223,44 @@ pt=[0 for i in range(0,1000)]
 for i in range(1000):
     pt[i],=plt.plot(0,0,marker='*')'''
 ##############################################################################################################################################################
-try:
-    cur2.execute("CREATE TABLE BusPos(Id INT, posx FLOAT, posy FLOAT)")
-    cur1.execute("CREATE TABLE BusRoute(Id INT, Route TEXT)")
-except:
-    pass
+
+cur1.execute("DROP TABLE IF EXISTS WaitTime")
+cur1.execute("DROP TABLE IF EXISTS BusFreq")
+
+cur1.execute("CREATE TABLE WaitTime(ItId INT,StatId INT, Wait FLOAT)")
+cur1.execute("CREATE TABLE BusFreq(ItId INT,StatId INT, Freq INT)")
+
+cur2.execute("DROP TABLE IF EXISTS BusPos")
+cur1.execute("DROP TABLE IF EXISTS BusRoute")
+
+cur2.execute("CREATE TABLE BusPos(Id INT, posx FLOAT, posy FLOAT)")
+cur1.execute("CREATE TABLE BusRoute(Id INT, Route TEXT)")
+
 test=[0 for i in range(50)]
 #############################################################################################################################################################
 with con,con1,con2:
     for i in range(50):
         cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(i,-1,-1))
         cur1.execute('INSERT INTO BusRoute VALUES(%d,"%s")'%(i,''))
-    for i in range(1,950):
+    for i in range(1,1000):
+        if(i%100==0):
+            for itr in range(len(x)):
+                ppl_count=0
+                tot_val=0
+                for jtr in range(len(avg_wait_time[itr])):
+                    if(not(avg_wait_time[itr][jtr]==0)):
+                        ppl_count+=1
+                        tot_val+=avg_wait_time[itr][jtr]
+                        avg_wait_time[itr][jtr]=0
+
+                #WRITE IN DATABSE -- i, itr ,tot_val/ppl_count
+                cur1.execute('INSERT INTO WaitTime VALUES(%d,%d,%f)'%(i,itr,(tot_val/ppl_count)))
+            for itr in range(len(x)):
+                #WRITE IN DATABASE bus_freq[itr]
+                cur1.execute('INSERT INTO BusFreq VALUES(%d,%d,%d)'%(i,itr,(bus_freq[itr])))
+                bus_freq[itr]=0
+
+
         if (i%50==0):
             print i
         cur.execute("SELECT * FROM Data WHERE ItterID=%d ORDER BY Id"%i)
@@ -251,7 +280,8 @@ with con,con1,con2:
             for k in rows:
                 if(dist([stationx[j],stationy[j]],pos[k[0]])<20):
                     #print k[0],j
-                    
+                    if(k[3]<21):
+                        avg_wait_time[j][k[0]]+=1
                     tem.append(k)
             NewBus=cluster(tem[:])
             #print NewBus
@@ -296,8 +326,11 @@ with con,con1,con2:
             bstop=near([coord[0],coord[1]])
             if bstop==4 and temp_bus[j][1]==1:
                 print '-> ',bstop,temp_bus[j][1],i,rows[temp_bus[j][0][0]][4]
-            if not(bstop==-1 ) and not(bstop in route[temp_bus[j][1]]):
-                route[temp_bus[j][1]].append(bstop)
+            if not(bstop==-1 ):
+                if not(bstop in route[temp_bus[j][1]]):
+                    route[temp_bus[j][1]].append(bstop)
+                bus_freq[bstop]+=1
+
         bus=temp_bus        
         #plt.pause(0.0001)
         for srt_i in range(len(bus)):

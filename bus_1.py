@@ -134,10 +134,11 @@ for bus in busses:
         routey=routey+temy
     rtx.append(routex)
     rty.append(routey)
-    
+
 conn=connect('database/Bus_new.db')
 with conn:
     curr=conn.cursor()
+    curr.execute("DROP TABLE IF EXISTS Bus")
     curr.execute("CREATE TABLE Bus (id INT,Itter INT,posx FLOAT,posy FLOAT)")
     for i in range(len(busses)):
         for j in range(len(rtx[i])):
@@ -156,6 +157,7 @@ for i in range(len(test_points)):
     #pt[i],=plt.plot(tem[0],tem[1],marker='o')
 #plt.scatter(x,y)
 #ptbus,=plt.plot(rtx[0][0],rty[0][0],marker='o')
+cur.execute("DROP TABLE IF EXISTS Data")
 cur.execute("CREATE TABLE Data(ItterID INT,Id INT, posx FLOAT, posy FLOAT, speed FLOAT, Direction INT,Street TEXT )")
 cur.execute("CREATE INDEX index_name ON Data(ItterID)")
 with con:    
