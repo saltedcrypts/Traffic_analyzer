@@ -178,13 +178,13 @@ with con:
                 for k in range(len(test_points)):
                     if (deboard_number<=0):
                         break
-                    if(test_points[k][0]==0 and deboard_number>0):
+                    if(test_points[k][0]==it and deboard_number>0):
                         deboard_number=deboard_number-1
                         dbrd=dbrd+1
                         test_points[k][0]=-1
                         random_id.append(next_index)
                         next_index=next_index+1
-                        test_points[k][1]=[x[near([rtx[0][i1],rty[0][i1]])],y[near([rtx[0][i1],rty[0][i1]])]]
+                        test_points[k][1]=[x[n],y[n]]
                         ar=math.ceil(random()*20)-10
                         br=math.ceil(random()*20)-10
                 

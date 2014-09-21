@@ -181,9 +181,9 @@ def preserve(bus,rows):
             t.sort(key=len)
             t.reverse()
             buss.append([t[0],i[1]])
-            for p in t[1:]:
+            '''for p in t[1:]:
                 buss.append([p,git])
-                git=git+1
+                git=git+1'''
         else:
             #buss.append(i)
             pass
@@ -203,6 +203,7 @@ try:
     cur1.execute("CREATE TABLE BusRoute(Id INT, Route TEXT)")
 except:
     pass
+test=[0 for i in range(50)]
 #############################################################################################################################################################
 with con,con1,con2:
     for i in range(50):
@@ -211,15 +212,20 @@ with con,con1,con2:
     for i in range(1,950):
         if (i%50==0):
             print i
-        cur.execute("SELECT * FROM Data WHERE ItterID = %d ORDER BY Id"%i)
+        cur.execute("SELECT * FROM Data WHERE ItterID=%d ORDER BY Id"%i)
         rows = cur.fetchall()
         rows=[j[1:] for j in rows]
         rows.sort()
         #for j in range(len(rows)):
             #pt1[j].set_data(rows[j][1]+random()*((-1)**j),rows[j][2]+random()*((-1)**j))
+       
         for j in rows:
             pos[j[0]]=[j[1],j[2]]
-        
+            
+        for j in range(len(bus)):
+            tm=[rows[k] for k in bus[j][0]]
+            if avg(tm)<30:
+                test[j]=1
         for j in range(len(stationx)):
             tem=[]
             for k in rows:
@@ -235,7 +241,7 @@ with con,con1,con2:
             rm=[]
             for k in NewBus:
                 for l in bus:
-                    if l==[] or k==[]:
+                    if l==[] or k==[] or test[bus.index(l)]==1:
                         continue
                     
                     if SetDiff(l[0],k) == 1:
@@ -256,7 +262,7 @@ with con,con1,con2:
                     continue
                 bus.append([adder,git])
                 git=git+1
-        bus=preserve(bus,rows)
+        #bus=preserve(bus,rows)
         bus.sort()
         temp_bus=[bus[0]]+[bus[dup] for dup in range(1,len(bus)) if not(bus[dup]==bus[dup-1])]
         
@@ -287,11 +293,14 @@ with con,con1,con2:
             screen.blit(dot,(rows[j][1]+5*random()*((-1)**j),rows[j][2]+5*random()*((-1)**j)))
         for j in range(len(Rrtx)):
             screen.blit(RealBusPoint,(Rrtx[j][i%len(Rrtx[j])],Rrty[j][i%len(Rrtx[j])]))
-        print len(cbus),' -> ',i   
+        print len(cbus),' -> ',i
+        for k in bus:
+            print len(k[0]),k[1]
+            
         for k in range(len(cbus)):
             screen.blit(BusPoint,(cbus[k][0],cbus[k][1]))
-            cur2.execute("UPDATE BusPos SET posx=%f , posy=%f WHERE Id=%d"%(cbus[k][0],cbus[k][1],k))
-            cur1.execute('UPDATE  BusRoute SET Route="%s" WHERE Id=%d'%(str(route[k]),k))
+            cur2.execute("UPDATE BusPos SET posx=%f , posy=%f WHERE Id=%d"%(cbus[k][0],cbus[k][1],bus[k][1]))
+            cur1.execute('UPDATE  BusRoute SET Route="%s" WHERE Id=%d'%(str(route[bus[k][1]]),bus[k][1]))
             #pt[k].set_data(cbus[k][0],cbus[k][1])
         
         
