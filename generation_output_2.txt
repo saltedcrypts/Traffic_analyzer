@@ -1,0 +1,5001 @@
+(786, 293)
+iteration number 0
+30
+30
+30
+30
+iteration number 1
+30
+30
+30
+30
+iteration number 2
+30
+30
+30
+30
+iteration number 3
+30
+30
+30
+30
+iteration number 4
+30
+30
+30
+30
+iteration number 5
+30
+30
+30
+30
+iteration number 6
+30
+30
+30
+30
+iteration number 7
+30
+30
+30
+30
+iteration number 8
+30
+30
+30
+30
+iteration number 9
+30
+30
+30
+30
+iteration number 10
+30
+30
+30
+30
+iteration number 11
+30
+30
+30
+30
+iteration number 12
+30
+30
+30
+30
+iteration number 13
+30
+30
+30
+30
+iteration number 14
+30
+30
+30
+30
+iteration number 15
+30
+30
+30
+30
+iteration number 16
+30
+30
+30
+30
+iteration number 17
+30
+30
+30
+30
+iteration number 18
+30
+30
+30
+30
+iteration number 19
+30
+30
+30
+30
+iteration number 20
+30
+30
+30
+30
+iteration number 21
+26
+30
+30
+30
+iteration number 22
+26
+30
+30
+30
+iteration number 23
+26
+30
+30
+30
+iteration number 24
+26
+30
+30
+30
+iteration number 25
+26
+30
+30
+30
+iteration number 26
+26
+30
+30
+30
+iteration number 27
+26
+30
+30
+30
+iteration number 28
+26
+33
+30
+30
+iteration number 29
+26
+33
+30
+30
+iteration number 30
+26
+33
+30
+30
+iteration number 31
+26
+33
+30
+30
+iteration number 32
+26
+33
+30
+30
+iteration number 33
+26
+33
+30
+30
+iteration number 34
+26
+33
+30
+30
+iteration number 35
+26
+33
+30
+30
+iteration number 36
+26
+33
+30
+30
+iteration number 37
+26
+33
+30
+30
+iteration number 38
+26
+33
+30
+30
+iteration number 39
+26
+33
+30
+30
+iteration number 40
+26
+33
+30
+30
+iteration number 41
+26
+33
+30
+30
+iteration number 42
+26
+33
+30
+30
+iteration number 43
+26
+33
+30
+30
+iteration number 44
+24
+33
+30
+30
+iteration number 45
+24
+33
+30
+30
+iteration number 46
+24
+33
+30
+30
+iteration number 47
+24
+33
+30
+30
+iteration number 48
+24
+33
+30
+30
+iteration number 49
+24
+33
+30
+30
+iteration number 50
+24
+33
+30
+30
+iteration number 51
+24
+33
+30
+30
+iteration number 52
+24
+33
+30
+30
+iteration number 53
+24
+33
+45
+30
+iteration number 54
+24
+33
+45
+30
+iteration number 55
+24
+33
+45
+30
+iteration number 56
+24
+33
+45
+30
+iteration number 57
+24
+33
+45
+30
+iteration number 58
+24
+33
+45
+30
+iteration number 59
+24
+33
+45
+30
+iteration number 60
+24
+33
+45
+30
+iteration number 61
+24
+33
+45
+30
+iteration number 62
+24
+33
+45
+30
+iteration number 63
+24
+33
+45
+18
+iteration number 64
+24
+33
+45
+18
+iteration number 65
+24
+33
+45
+18
+iteration number 66
+24
+33
+45
+18
+iteration number 67
+24
+33
+45
+18
+iteration number 68
+24
+33
+45
+18
+iteration number 69
+24
+40
+45
+18
+iteration number 70
+24
+40
+45
+18
+iteration number 71
+24
+40
+45
+18
+iteration number 72
+24
+40
+45
+18
+iteration number 73
+24
+40
+45
+18
+iteration number 74
+24
+40
+45
+18
+iteration number 75
+24
+40
+45
+18
+iteration number 76
+24
+40
+45
+18
+iteration number 77
+24
+40
+45
+18
+iteration number 78
+24
+40
+45
+18
+iteration number 79
+24
+40
+41
+18
+iteration number 80
+24
+40
+41
+18
+iteration number 81
+24
+40
+41
+18
+iteration number 82
+11
+40
+41
+18
+iteration number 83
+11
+40
+41
+18
+iteration number 84
+11
+40
+41
+18
+iteration number 85
+11
+40
+41
+18
+iteration number 86
+11
+40
+41
+18
+iteration number 87
+11
+40
+41
+18
+iteration number 88
+11
+40
+41
+18
+iteration number 89
+11
+40
+41
+18
+iteration number 90
+11
+40
+41
+18
+iteration number 91
+11
+40
+41
+18
+iteration number 92
+11
+40
+41
+18
+iteration number 93
+11
+40
+41
+18
+iteration number 94
+11
+40
+41
+18
+iteration number 95
+11
+40
+41
+18
+iteration number 96
+11
+40
+41
+18
+iteration number 97
+11
+40
+41
+18
+iteration number 98
+11
+40
+41
+18
+iteration number 99
+11
+40
+41
+18
+iteration number 100
+11
+40
+41
+18
+iteration number 101
+11
+40
+41
+18
+iteration number 102
+11
+40
+41
+18
+iteration number 103
+11
+40
+41
+18
+iteration number 104
+11
+40
+41
+18
+iteration number 105
+11
+40
+41
+18
+iteration number 106
+11
+40
+41
+18
+iteration number 107
+18
+40
+41
+18
+iteration number 108
+18
+42
+41
+18
+iteration number 109
+18
+42
+41
+18
+iteration number 110
+18
+42
+41
+18
+iteration number 111
+18
+42
+41
+18
+iteration number 112
+18
+42
+41
+18
+iteration number 113
+18
+42
+41
+18
+iteration number 114
+18
+42
+41
+18
+iteration number 115
+18
+42
+51
+18
+iteration number 116
+18
+42
+51
+18
+iteration number 117
+18
+42
+51
+18
+iteration number 118
+18
+42
+51
+18
+iteration number 119
+18
+42
+51
+18
+iteration number 120
+18
+42
+51
+18
+iteration number 121
+18
+42
+51
+18
+iteration number 122
+18
+42
+51
+18
+iteration number 123
+18
+42
+51
+18
+iteration number 124
+18
+42
+51
+18
+iteration number 125
+18
+42
+51
+18
+iteration number 126
+18
+42
+51
+18
+iteration number 127
+18
+42
+51
+18
+iteration number 128
+18
+42
+51
+18
+iteration number 129
+18
+42
+51
+18
+iteration number 130
+18
+42
+51
+18
+iteration number 131
+18
+42
+51
+18
+iteration number 132
+18
+42
+51
+18
+iteration number 133
+18
+42
+51
+18
+iteration number 134
+18
+42
+51
+18
+iteration number 135
+23
+42
+51
+18
+iteration number 136
+23
+42
+51
+18
+iteration number 137
+23
+42
+51
+18
+iteration number 138
+23
+42
+51
+18
+iteration number 139
+23
+42
+51
+18
+iteration number 140
+23
+42
+51
+18
+iteration number 141
+23
+42
+51
+18
+iteration number 142
+23
+42
+51
+18
+iteration number 143
+23
+42
+51
+18
+iteration number 144
+23
+42
+51
+18
+iteration number 145
+23
+42
+51
+18
+iteration number 146
+23
+42
+51
+18
+iteration number 147
+23
+42
+51
+18
+iteration number 148
+23
+42
+51
+18
+iteration number 149
+23
+42
+51
+18
+iteration number 150
+23
+42
+51
+18
+iteration number 151
+23
+42
+51
+18
+iteration number 152
+23
+42
+51
+18
+iteration number 153
+23
+42
+51
+18
+iteration number 154
+23
+42
+51
+18
+iteration number 155
+23
+42
+51
+18
+iteration number 156
+23
+42
+51
+18
+iteration number 157
+23
+42
+51
+18
+iteration number 158
+23
+42
+51
+18
+iteration number 159
+23
+42
+51
+18
+iteration number 160
+23
+42
+51
+34
+iteration number 161
+23
+42
+51
+34
+iteration number 162
+23
+42
+51
+34
+iteration number 163
+23
+42
+51
+34
+iteration number 164
+23
+42
+51
+34
+iteration number 165
+23
+42
+51
+34
+iteration number 166
+23
+42
+51
+34
+iteration number 167
+23
+42
+51
+34
+iteration number 168
+23
+42
+51
+34
+iteration number 169
+23
+42
+51
+34
+iteration number 170
+23
+42
+51
+34
+iteration number 171
+23
+42
+51
+34
+iteration number 172
+23
+42
+51
+34
+iteration number 173
+23
+42
+51
+34
+iteration number 174
+23
+42
+51
+34
+iteration number 175
+23
+42
+51
+34
+iteration number 176
+23
+42
+51
+34
+iteration number 177
+23
+42
+51
+34
+iteration number 178
+23
+42
+51
+34
+iteration number 179
+23
+42
+51
+34
+iteration number 180
+23
+42
+51
+34
+iteration number 181
+23
+42
+51
+34
+iteration number 182
+23
+42
+51
+34
+iteration number 183
+23
+42
+51
+34
+iteration number 184
+23
+42
+51
+34
+iteration number 185
+23
+42
+51
+34
+iteration number 186
+23
+42
+51
+34
+iteration number 187
+23
+42
+51
+34
+iteration number 188
+23
+42
+51
+34
+iteration number 189
+23
+42
+51
+34
+iteration number 190
+23
+42
+51
+34
+iteration number 191
+23
+42
+51
+34
+iteration number 192
+23
+42
+51
+34
+iteration number 193
+23
+42
+51
+34
+iteration number 194
+23
+42
+51
+35
+iteration number 195
+23
+42
+51
+35
+iteration number 196
+23
+42
+51
+35
+iteration number 197
+23
+42
+51
+35
+iteration number 198
+23
+42
+51
+35
+iteration number 199
+27
+42
+51
+35
+iteration number 200
+27
+42
+51
+35
+iteration number 201
+27
+42
+51
+35
+iteration number 202
+27
+42
+51
+35
+iteration number 203
+27
+42
+51
+35
+iteration number 204
+27
+42
+51
+35
+iteration number 205
+27
+42
+51
+35
+iteration number 206
+27
+42
+51
+35
+iteration number 207
+27
+20
+51
+35
+iteration number 208
+27
+20
+51
+35
+iteration number 209
+27
+20
+51
+35
+iteration number 210
+27
+20
+51
+35
+iteration number 211
+27
+20
+51
+35
+iteration number 212
+27
+20
+51
+35
+iteration number 213
+27
+20
+51
+35
+iteration number 214
+27
+20
+51
+35
+iteration number 215
+27
+20
+51
+35
+iteration number 216
+27
+20
+51
+35
+iteration number 217
+27
+20
+51
+35
+iteration number 218
+27
+20
+51
+35
+iteration number 219
+27
+20
+51
+35
+iteration number 220
+27
+20
+51
+35
+iteration number 221
+27
+20
+51
+35
+iteration number 222
+27
+20
+51
+35
+iteration number 223
+27
+20
+51
+35
+iteration number 224
+34
+20
+51
+35
+iteration number 225
+34
+20
+51
+35
+iteration number 226
+34
+20
+51
+35
+iteration number 227
+34
+20
+51
+35
+iteration number 228
+34
+20
+51
+35
+iteration number 229
+34
+20
+51
+35
+iteration number 230
+34
+20
+51
+35
+iteration number 231
+34
+20
+51
+35
+iteration number 232
+34
+20
+51
+35
+iteration number 233
+34
+20
+51
+35
+iteration number 234
+34
+20
+51
+35
+iteration number 235
+34
+20
+51
+35
+iteration number 236
+34
+20
+51
+35
+iteration number 237
+34
+20
+51
+35
+iteration number 238
+34
+20
+51
+35
+iteration number 239
+34
+16
+51
+35
+iteration number 240
+34
+16
+51
+35
+iteration number 241
+34
+16
+51
+35
+iteration number 242
+34
+16
+51
+35
+iteration number 243
+34
+16
+51
+37
+iteration number 244
+34
+16
+51
+37
+iteration number 245
+34
+16
+51
+37
+iteration number 246
+34
+16
+51
+37
+iteration number 247
+12
+16
+51
+37
+iteration number 248
+12
+16
+51
+37
+iteration number 249
+12
+16
+51
+37
+iteration number 250
+12
+16
+41
+37
+iteration number 251
+12
+16
+41
+37
+iteration number 252
+12
+16
+41
+37
+iteration number 253
+12
+16
+41
+37
+iteration number 254
+12
+16
+41
+37
+iteration number 255
+12
+16
+41
+37
+iteration number 256
+12
+16
+41
+37
+iteration number 257
+12
+16
+41
+37
+iteration number 258
+12
+16
+41
+37
+iteration number 259
+12
+16
+41
+37
+iteration number 260
+12
+16
+41
+37
+iteration number 261
+12
+16
+41
+37
+iteration number 262
+12
+16
+41
+37
+iteration number 263
+12
+16
+41
+37
+iteration number 264
+12
+16
+41
+37
+iteration number 265
+12
+16
+41
+37
+iteration number 266
+12
+16
+41
+37
+iteration number 267
+12
+16
+41
+37
+iteration number 268
+12
+16
+41
+37
+iteration number 269
+12
+16
+41
+39
+iteration number 270
+12
+16
+41
+39
+iteration number 271
+12
+16
+41
+39
+iteration number 272
+12
+16
+41
+39
+iteration number 273
+12
+16
+41
+39
+iteration number 274
+12
+16
+41
+39
+iteration number 275
+12
+16
+41
+39
+iteration number 276
+12
+16
+28
+39
+iteration number 277
+12
+16
+28
+39
+iteration number 278
+12
+16
+28
+39
+iteration number 279
+12
+16
+28
+39
+iteration number 280
+12
+26
+28
+39
+iteration number 281
+12
+26
+28
+39
+iteration number 282
+12
+26
+28
+39
+iteration number 283
+12
+26
+28
+39
+iteration number 284
+12
+26
+28
+39
+iteration number 285
+39
+26
+28
+39
+iteration number 286
+39
+26
+28
+39
+iteration number 287
+39
+26
+28
+39
+iteration number 288
+39
+26
+28
+39
+iteration number 289
+39
+26
+28
+39
+iteration number 290
+39
+26
+28
+39
+iteration number 291
+39
+26
+28
+39
+iteration number 292
+39
+26
+28
+39
+iteration number 293
+39
+26
+28
+39
+iteration number 294
+39
+26
+28
+39
+iteration number 295
+39
+26
+28
+39
+iteration number 296
+39
+26
+28
+39
+iteration number 297
+39
+26
+28
+39
+iteration number 298
+39
+26
+28
+39
+iteration number 299
+39
+26
+28
+39
+iteration number 300
+39
+26
+28
+39
+iteration number 301
+39
+26
+28
+39
+iteration number 302
+39
+26
+28
+39
+iteration number 303
+39
+26
+28
+39
+iteration number 304
+39
+26
+28
+39
+iteration number 305
+39
+26
+28
+39
+iteration number 306
+39
+26
+28
+39
+iteration number 307
+39
+26
+28
+39
+iteration number 308
+39
+26
+28
+39
+iteration number 309
+39
+26
+28
+39
+iteration number 310
+28
+26
+28
+39
+iteration number 311
+28
+26
+28
+39
+iteration number 312
+28
+26
+28
+39
+iteration number 313
+28
+26
+28
+39
+iteration number 314
+28
+26
+28
+39
+iteration number 315
+28
+26
+28
+39
+iteration number 316
+28
+26
+28
+39
+iteration number 317
+28
+26
+28
+39
+iteration number 318
+28
+26
+28
+39
+iteration number 319
+28
+36
+28
+39
+iteration number 320
+28
+36
+28
+39
+iteration number 321
+28
+36
+28
+39
+iteration number 322
+28
+36
+28
+39
+iteration number 323
+28
+36
+28
+39
+iteration number 324
+28
+36
+28
+39
+iteration number 325
+28
+36
+28
+39
+iteration number 326
+28
+36
+28
+39
+iteration number 327
+28
+36
+28
+39
+iteration number 328
+28
+36
+28
+39
+iteration number 329
+28
+36
+28
+39
+iteration number 330
+28
+36
+28
+39
+iteration number 331
+28
+36
+28
+39
+iteration number 332
+28
+36
+28
+39
+iteration number 333
+28
+36
+28
+39
+iteration number 334
+28
+36
+28
+39
+iteration number 335
+28
+36
+28
+39
+iteration number 336
+28
+36
+28
+26
+iteration number 337
+28
+36
+28
+26
+iteration number 338
+32
+36
+28
+26
+iteration number 339
+32
+36
+28
+26
+iteration number 340
+32
+36
+28
+26
+iteration number 341
+32
+36
+28
+26
+iteration number 342
+32
+36
+28
+26
+iteration number 343
+32
+36
+28
+26
+iteration number 344
+32
+36
+28
+26
+iteration number 345
+32
+36
+28
+26
+iteration number 346
+32
+36
+28
+26
+iteration number 347
+32
+36
+28
+26
+iteration number 348
+32
+36
+28
+26
+iteration number 349
+32
+36
+28
+26
+iteration number 350
+32
+36
+28
+26
+iteration number 351
+32
+36
+28
+26
+iteration number 352
+32
+36
+28
+26
+iteration number 353
+32
+36
+28
+26
+iteration number 354
+32
+36
+28
+26
+iteration number 355
+32
+36
+28
+26
+iteration number 356
+32
+36
+28
+26
+iteration number 357
+32
+36
+28
+26
+iteration number 358
+32
+36
+28
+26
+iteration number 359
+32
+36
+28
+26
+iteration number 360
+32
+36
+28
+26
+iteration number 361
+32
+36
+28
+26
+iteration number 362
+32
+36
+28
+26
+iteration number 363
+32
+36
+28
+26
+iteration number 364
+32
+36
+28
+26
+iteration number 365
+32
+36
+28
+26
+iteration number 366
+32
+36
+28
+26
+iteration number 367
+32
+36
+28
+26
+iteration number 368
+32
+36
+28
+26
+iteration number 369
+32
+36
+28
+26
+iteration number 370
+32
+36
+28
+26
+iteration number 371
+32
+36
+28
+26
+iteration number 372
+32
+36
+28
+26
+iteration number 373
+32
+36
+28
+26
+iteration number 374
+32
+36
+28
+26
+iteration number 375
+32
+36
+28
+26
+iteration number 376
+32
+36
+28
+26
+iteration number 377
+32
+36
+28
+26
+iteration number 378
+32
+36
+28
+26
+iteration number 379
+32
+36
+28
+26
+iteration number 380
+32
+36
+28
+26
+iteration number 381
+32
+36
+28
+26
+iteration number 382
+32
+36
+28
+26
+iteration number 383
+32
+36
+28
+26
+iteration number 384
+32
+36
+28
+26
+iteration number 385
+32
+36
+28
+26
+iteration number 386
+32
+36
+28
+26
+iteration number 387
+32
+36
+28
+26
+iteration number 388
+32
+36
+28
+36
+iteration number 389
+32
+36
+28
+36
+iteration number 390
+32
+36
+25
+36
+iteration number 391
+32
+36
+25
+36
+iteration number 392
+32
+36
+25
+36
+iteration number 393
+32
+36
+25
+36
+iteration number 394
+32
+36
+25
+36
+iteration number 395
+32
+36
+25
+36
+iteration number 396
+32
+36
+25
+36
+iteration number 397
+32
+36
+25
+36
+iteration number 398
+32
+36
+25
+36
+iteration number 399
+32
+36
+25
+36
+iteration number 400
+32
+36
+25
+36
+iteration number 401
+32
+36
+25
+36
+iteration number 402
+41
+36
+25
+36
+iteration number 403
+41
+36
+25
+36
+iteration number 404
+41
+36
+25
+36
+iteration number 405
+41
+36
+25
+36
+iteration number 406
+41
+36
+25
+36
+iteration number 407
+41
+36
+25
+36
+iteration number 408
+41
+36
+25
+36
+iteration number 409
+41
+36
+25
+36
+iteration number 410
+41
+36
+25
+36
+iteration number 411
+41
+36
+25
+36
+iteration number 412
+41
+36
+25
+36
+iteration number 413
+41
+36
+25
+36
+iteration number 414
+41
+36
+25
+36
+iteration number 415
+41
+36
+25
+36
+iteration number 416
+41
+36
+25
+36
+iteration number 417
+41
+36
+25
+36
+iteration number 418
+41
+51
+25
+36
+iteration number 419
+41
+51
+25
+36
+iteration number 420
+41
+51
+25
+36
+iteration number 421
+41
+51
+25
+36
+iteration number 422
+41
+51
+25
+36
+iteration number 423
+41
+51
+25
+36
+iteration number 424
+41
+51
+25
+36
+iteration number 425
+41
+51
+25
+36
+iteration number 426
+41
+51
+25
+36
+iteration number 427
+25
+51
+25
+36
+iteration number 428
+25
+51
+25
+36
+iteration number 429
+25
+51
+25
+36
+iteration number 430
+25
+51
+25
+36
+iteration number 431
+25
+51
+25
+36
+iteration number 432
+25
+51
+25
+36
+iteration number 433
+25
+51
+25
+36
+iteration number 434
+25
+51
+25
+36
+iteration number 435
+25
+51
+25
+36
+iteration number 436
+25
+51
+25
+36
+iteration number 437
+25
+51
+25
+36
+iteration number 438
+25
+51
+25
+36
+iteration number 439
+25
+51
+25
+36
+iteration number 440
+25
+51
+25
+36
+iteration number 441
+25
+51
+25
+36
+iteration number 442
+25
+51
+25
+36
+iteration number 443
+25
+51
+25
+36
+iteration number 444
+25
+51
+25
+36
+iteration number 445
+25
+51
+25
+36
+iteration number 446
+25
+51
+25
+36
+iteration number 447
+25
+51
+25
+36
+iteration number 448
+25
+51
+25
+36
+iteration number 449
+25
+51
+25
+36
+iteration number 450
+46
+51
+25
+36
+iteration number 451
+46
+51
+25
+36
+iteration number 452
+46
+51
+25
+36
+iteration number 453
+46
+51
+25
+36
+iteration number 454
+46
+51
+25
+36
+iteration number 455
+46
+51
+25
+36
+iteration number 456
+46
+51
+25
+36
+iteration number 457
+46
+51
+25
+36
+iteration number 458
+46
+51
+25
+36
+iteration number 459
+46
+51
+25
+36
+iteration number 460
+46
+51
+25
+36
+iteration number 461
+46
+51
+25
+36
+iteration number 462
+46
+51
+25
+36
+iteration number 463
+46
+51
+25
+36
+iteration number 464
+46
+51
+25
+36
+iteration number 465
+46
+51
+25
+36
+iteration number 466
+46
+51
+25
+36
+iteration number 467
+46
+51
+25
+36
+iteration number 468
+46
+51
+25
+36
+iteration number 469
+46
+51
+25
+36
+iteration number 470
+46
+51
+25
+36
+iteration number 471
+46
+51
+25
+36
+iteration number 472
+46
+51
+25
+36
+iteration number 473
+46
+51
+28
+36
+iteration number 474
+46
+51
+28
+36
+iteration number 475
+46
+51
+28
+36
+iteration number 476
+46
+51
+28
+36
+iteration number 477
+46
+51
+28
+36
+iteration number 478
+46
+51
+28
+36
+iteration number 479
+46
+51
+28
+36
+iteration number 480
+46
+51
+28
+36
+iteration number 481
+46
+51
+28
+36
+iteration number 482
+46
+51
+28
+36
+iteration number 483
+46
+51
+28
+36
+iteration number 484
+46
+51
+28
+36
+iteration number 485
+46
+51
+28
+36
+iteration number 486
+46
+51
+28
+36
+iteration number 487
+46
+51
+28
+36
+iteration number 488
+25
+51
+28
+36
+iteration number 489
+25
+51
+28
+36
+iteration number 490
+25
+51
+28
+36
+iteration number 491
+25
+37
+28
+36
+iteration number 492
+25
+37
+28
+36
+iteration number 493
+25
+37
+28
+36
+iteration number 494
+25
+37
+28
+36
+iteration number 495
+25
+37
+28
+36
+iteration number 496
+25
+37
+28
+36
+iteration number 497
+25
+37
+28
+36
+iteration number 498
+25
+37
+28
+36
+iteration number 499
+25
+37
+28
+36
+iteration number 500
+25
+37
+28
+36
+iteration number 501
+25
+37
+28
+36
+iteration number 502
+25
+37
+28
+36
+iteration number 503
+25
+37
+28
+36
+iteration number 504
+25
+37
+28
+36
+iteration number 505
+25
+37
+28
+36
+iteration number 506
+25
+37
+28
+36
+iteration number 507
+25
+37
+28
+36
+iteration number 508
+25
+37
+28
+36
+iteration number 509
+25
+37
+17
+36
+iteration number 510
+25
+37
+17
+36
+iteration number 511
+25
+37
+17
+36
+iteration number 512
+25
+37
+17
+36
+iteration number 513
+20
+37
+17
+36
+iteration number 514
+20
+37
+17
+36
+iteration number 515
+20
+37
+17
+36
+iteration number 516
+20
+37
+17
+36
+iteration number 517
+20
+37
+17
+36
+iteration number 518
+20
+37
+17
+36
+iteration number 519
+20
+37
+17
+36
+iteration number 520
+20
+37
+17
+36
+iteration number 521
+20
+37
+17
+36
+iteration number 522
+20
+37
+17
+36
+iteration number 523
+20
+37
+17
+36
+iteration number 524
+20
+37
+17
+36
+iteration number 525
+20
+37
+17
+36
+iteration number 526
+20
+37
+17
+36
+iteration number 527
+20
+37
+17
+36
+iteration number 528
+20
+37
+17
+36
+iteration number 529
+20
+37
+17
+36
+iteration number 530
+20
+19
+17
+36
+iteration number 531
+20
+19
+17
+36
+iteration number 532
+20
+19
+17
+36
+iteration number 533
+20
+19
+17
+36
+iteration number 534
+20
+19
+17
+36
+iteration number 535
+20
+19
+17
+36
+iteration number 536
+20
+19
+17
+36
+iteration number 537
+20
+19
+17
+36
+iteration number 538
+20
+19
+17
+36
+iteration number 539
+20
+19
+17
+36
+iteration number 540
+20
+19
+17
+36
+iteration number 541
+10
+19
+17
+36
+iteration number 542
+10
+19
+17
+37
+iteration number 543
+10
+19
+17
+37
+iteration number 544
+10
+19
+17
+37
+iteration number 545
+10
+19
+17
+37
+iteration number 546
+10
+19
+17
+37
+iteration number 547
+10
+19
+17
+37
+iteration number 548
+10
+19
+17
+37
+iteration number 549
+10
+19
+17
+37
+iteration number 550
+10
+19
+17
+37
+iteration number 551
+10
+19
+17
+37
+iteration number 552
+10
+19
+17
+37
+iteration number 553
+10
+19
+17
+37
+iteration number 554
+10
+19
+17
+37
+iteration number 555
+10
+19
+17
+37
+iteration number 556
+10
+19
+17
+37
+iteration number 557
+10
+19
+17
+37
+iteration number 558
+10
+19
+17
+37
+iteration number 559
+10
+19
+17
+37
+iteration number 560
+10
+19
+17
+37
+iteration number 561
+10
+19
+17
+37
+iteration number 562
+10
+19
+17
+37
+iteration number 563
+10
+19
+17
+37
+iteration number 564
+10
+19
+17
+37
+iteration number 565
+10
+19
+17
+37
+iteration number 566
+10
+19
+17
+37
+iteration number 567
+10
+19
+17
+37
+iteration number 568
+10
+19
+17
+37
+iteration number 569
+10
+19
+17
+37
+iteration number 570
+10
+19
+17
+37
+iteration number 571
+10
+19
+17
+37
+iteration number 572
+10
+19
+17
+37
+iteration number 573
+10
+19
+17
+37
+iteration number 574
+10
+19
+17
+37
+iteration number 575
+10
+19
+17
+37
+iteration number 576
+10
+19
+17
+37
+iteration number 577
+10
+19
+17
+37
+iteration number 578
+10
+19
+17
+37
+iteration number 579
+10
+19
+17
+37
+iteration number 580
+10
+19
+17
+37
+iteration number 581
+10
+19
+17
+37
+iteration number 582
+10
+19
+17
+37
+iteration number 583
+10
+19
+17
+37
+iteration number 584
+10
+19
+17
+37
+iteration number 585
+10
+19
+17
+37
+iteration number 586
+10
+19
+17
+37
+iteration number 587
+10
+19
+12
+37
+iteration number 588
+10
+19
+12
+37
+iteration number 589
+10
+19
+12
+37
+iteration number 590
+10
+19
+12
+37
+iteration number 591
+10
+19
+12
+37
+iteration number 592
+10
+19
+12
+37
+iteration number 593
+10
+19
+12
+37
+iteration number 594
+10
+19
+12
+37
+iteration number 595
+10
+19
+12
+37
+iteration number 596
+10
+19
+12
+37
+iteration number 597
+10
+19
+12
+37
+iteration number 598
+10
+19
+12
+37
+iteration number 599
+10
+19
+12
+37
+iteration number 600
+10
+19
+12
+37
+iteration number 601
+10
+19
+12
+37
+iteration number 602
+10
+19
+12
+37
+iteration number 603
+10
+19
+12
+37
+iteration number 604
+10
+19
+12
+37
+iteration number 605
+10
+19
+12
+37
+iteration number 606
+10
+19
+12
+37
+iteration number 607
+10
+19
+12
+37
+iteration number 608
+10
+19
+12
+37
+iteration number 609
+10
+19
+12
+51
+iteration number 610
+10
+19
+12
+51
+iteration number 611
+10
+19
+12
+51
+iteration number 612
+10
+19
+12
+51
+iteration number 613
+10
+19
+12
+51
+iteration number 614
+10
+19
+12
+51
+iteration number 615
+10
+19
+12
+51
+iteration number 616
+10
+19
+12
+51
+iteration number 617
+10
+19
+12
+51
+iteration number 618
+10
+19
+12
+51
+iteration number 619
+10
+19
+12
+51
+iteration number 620
+10
+19
+12
+51
+iteration number 621
+10
+19
+12
+51
+iteration number 622
+10
+19
+12
+51
+iteration number 623
+10
+19
+12
+51
+iteration number 624
+10
+19
+12
+51
+iteration number 625
+10
+19
+12
+51
+iteration number 626
+10
+19
+12
+51
+iteration number 627
+10
+19
+12
+51
+iteration number 628
+10
+19
+12
+51
+iteration number 629
+10
+47
+12
+51
+iteration number 630
+16
+47
+12
+51
+iteration number 631
+16
+47
+12
+51
+iteration number 632
+16
+47
+12
+51
+iteration number 633
+16
+47
+12
+51
+iteration number 634
+16
+47
+12
+51
+iteration number 635
+16
+47
+12
+51
+iteration number 636
+16
+47
+12
+51
+iteration number 637
+16
+47
+12
+51
+iteration number 638
+16
+47
+12
+51
+iteration number 639
+16
+47
+12
+51
+iteration number 640
+16
+47
+12
+51
+iteration number 641
+16
+47
+12
+51
+iteration number 642
+16
+47
+12
+51
+iteration number 643
+16
+47
+12
+51
+iteration number 644
+16
+47
+10
+51
+iteration number 645
+16
+47
+10
+51
+iteration number 646
+16
+47
+10
+51
+iteration number 647
+16
+47
+10
+51
+iteration number 648
+16
+47
+10
+51
+iteration number 649
+16
+47
+10
+51
+iteration number 650
+16
+47
+10
+51
+iteration number 651
+16
+47
+10
+51
+iteration number 652
+16
+47
+10
+51
+iteration number 653
+15
+47
+10
+51
+iteration number 654
+15
+47
+10
+51
+iteration number 655
+15
+47
+10
+51
+iteration number 656
+15
+47
+10
+51
+iteration number 657
+15
+47
+10
+51
+iteration number 658
+15
+47
+10
+51
+iteration number 659
+15
+47
+10
+51
+iteration number 660
+15
+47
+10
+51
+iteration number 661
+15
+51
+10
+23
+iteration number 662
+15
+51
+10
+23
+iteration number 663
+15
+51
+10
+23
+iteration number 664
+15
+51
+10
+23
+iteration number 665
+15
+51
+10
+23
+iteration number 666
+15
+51
+10
+23
+iteration number 667
+15
+51
+10
+23
+iteration number 668
+15
+51
+10
+23
+iteration number 669
+15
+51
+10
+23
+iteration number 670
+15
+51
+13
+23
+iteration number 671
+15
+51
+13
+23
+iteration number 672
+15
+51
+13
+23
+iteration number 673
+15
+51
+13
+23
+iteration number 674
+15
+51
+13
+23
+iteration number 675
+15
+51
+13
+23
+iteration number 676
+15
+51
+13
+23
+iteration number 677
+15
+51
+13
+23
+iteration number 678
+15
+51
+13
+23
+iteration number 679
+15
+51
+13
+23
+iteration number 680
+15
+51
+13
+23
+iteration number 681
+15
+51
+13
+23
+iteration number 682
+15
+51
+13
+23
+iteration number 683
+15
+51
+13
+23
+iteration number 684
+15
+51
+13
+23
+iteration number 685
+15
+51
+13
+23
+iteration number 686
+15
+51
+13
+23
+iteration number 687
+15
+51
+13
+23
+iteration number 688
+15
+51
+13
+23
+iteration number 689
+15
+51
+13
+23
+iteration number 690
+15
+51
+13
+23
+iteration number 691
+19
+51
+13
+23
+iteration number 692
+19
+51
+13
+23
+iteration number 693
+19
+51
+13
+23
+iteration number 694
+19
+51
+13
+23
+iteration number 695
+19
+51
+13
+23
+iteration number 696
+19
+51
+13
+23
+iteration number 697
+19
+51
+13
+23
+iteration number 698
+19
+51
+13
+23
+iteration number 699
+19
+51
+13
+23
+iteration number 700
+19
+51
+13
+23
+iteration number 701
+19
+51
+13
+23
+iteration number 702
+19
+51
+13
+23
+iteration number 703
+19
+51
+13
+23
+iteration number 704
+19
+51
+13
+23
+iteration number 705
+19
+51
+13
+23
+iteration number 706
+19
+51
+20
+17
+iteration number 707
+19
+51
+20
+17
+iteration number 708
+19
+51
+20
+17
+iteration number 709
+19
+51
+20
+17
+iteration number 710
+19
+51
+20
+17
+iteration number 711
+19
+51
+20
+17
+iteration number 712
+19
+51
+20
+17
+iteration number 713
+19
+51
+20
+17
+iteration number 714
+19
+51
+20
+17
+iteration number 715
+19
+51
+20
+17
+iteration number 716
+23
+51
+20
+17
+iteration number 717
+23
+51
+20
+17
+iteration number 718
+23
+51
+20
+17
+iteration number 719
+23
+51
+20
+17
+iteration number 720
+23
+51
+20
+17
+iteration number 721
+23
+51
+20
+17
+iteration number 722
+23
+51
+20
+17
+iteration number 723
+23
+51
+20
+17
+iteration number 724
+23
+51
+20
+17
+iteration number 725
+23
+51
+20
+17
+iteration number 726
+23
+51
+20
+17
+iteration number 727
+23
+51
+20
+17
+iteration number 728
+23
+51
+20
+17
+iteration number 729
+23
+51
+20
+17
+iteration number 730
+23
+51
+20
+17
+iteration number 731
+23
+51
+20
+17
+iteration number 732
+23
+51
+20
+17
+iteration number 733
+23
+51
+20
+17
+iteration number 734
+23
+51
+20
+17
+iteration number 735
+23
+51
+20
+17
+iteration number 736
+23
+51
+20
+17
+iteration number 737
+23
+51
+20
+17
+iteration number 738
+23
+51
+20
+17
+iteration number 739
+23
+51
+20
+17
+iteration number 740
+23
+51
+20
+12
+iteration number 741
+23
+36
+20
+12
+iteration number 742
+23
+36
+20
+12
+iteration number 743
+23
+36
+20
+12
+iteration number 744
+10
+36
+20
+12
+iteration number 745
+10
+36
+20
+12
+iteration number 746
+10
+36
+20
+12
+iteration number 747
+10
+36
+20
+12
+iteration number 748
+10
+36
+20
+12
+iteration number 749
+10
+36
+20
+12
+iteration number 750
+10
+36
+20
+12
+iteration number 751
+10
+36
+20
+12
+iteration number 752
+10
+36
+20
+12
+iteration number 753
+10
+36
+20
+12
+iteration number 754
+10
+36
+20
+12
+iteration number 755
+10
+36
+20
+12
+iteration number 756
+10
+36
+20
+12
+iteration number 757
+10
+36
+20
+12
+iteration number 758
+10
+36
+20
+12
+iteration number 759
+10
+36
+20
+12
+iteration number 760
+10
+36
+20
+12
+iteration number 761
+10
+36
+20
+12
+iteration number 762
+10
+36
+20
+12
+iteration number 763
+10
+36
+20
+12
+iteration number 764
+10
+36
+20
+12
+iteration number 765
+10
+36
+20
+12
+iteration number 766
+10
+36
+20
+12
+iteration number 767
+10
+36
+20
+12
+iteration number 768
+10
+36
+20
+12
+iteration number 769
+10
+36
+20
+12
+iteration number 770
+10
+36
+20
+12
+iteration number 771
+10
+36
+20
+12
+iteration number 772
+10
+36
+20
+12
+iteration number 773
+10
+36
+20
+12
+iteration number 774
+10
+36
+20
+12
+iteration number 775
+10
+36
+20
+12
+iteration number 776
+10
+36
+20
+12
+iteration number 777
+10
+36
+20
+12
+iteration number 778
+10
+36
+20
+12
+iteration number 779
+10
+36
+20
+12
+iteration number 780
+10
+36
+20
+12
+iteration number 781
+10
+36
+20
+12
+iteration number 782
+10
+36
+20
+12
+iteration number 783
+10
+36
+20
+12
+iteration number 784
+10
+36
+17
+12
+iteration number 785
+10
+36
+17
+12
+iteration number 786
+10
+36
+17
+12
+iteration number 787
+10
+36
+17
+12
+iteration number 788
+10
+36
+17
+12
+iteration number 789
+10
+36
+17
+10
+iteration number 790
+10
+36
+17
+10
+iteration number 791
+10
+36
+17
+10
+iteration number 792
+10
+36
+17
+10
+iteration number 793
+10
+36
+17
+10
+iteration number 794
+10
+36
+17
+10
+iteration number 795
+10
+36
+17
+10
+iteration number 796
+10
+36
+17
+10
+iteration number 797
+10
+36
+17
+10
+iteration number 798
+10
+36
+17
+10
+iteration number 799
+10
+36
+17
+10
+iteration number 800
+10
+36
+17
+10
+iteration number 801
+10
+36
+17
+10
+iteration number 802
+10
+36
+17
+10
+iteration number 803
+10
+36
+17
+10
+iteration number 804
+10
+36
+17
+10
+iteration number 805
+10
+36
+17
+10
+iteration number 806
+10
+36
+17
+10
+iteration number 807
+10
+36
+17
+10
+iteration number 808
+10
+36
+17
+10
+iteration number 809
+10
+36
+17
+10
+iteration number 810
+10
+36
+17
+10
+iteration number 811
+10
+36
+17
+10
+iteration number 812
+10
+36
+17
+10
+iteration number 813
+10
+36
+17
+10
+iteration number 814
+10
+36
+17
+10
+iteration number 815
+10
+36
+17
+23
+iteration number 816
+10
+36
+17
+23
+iteration number 817
+10
+36
+17
+23
+iteration number 818
+10
+36
+17
+23
+iteration number 819
+10
+36
+17
+23
+iteration number 820
+10
+36
+17
+23
+iteration number 821
+10
+36
+17
+23
+iteration number 822
+10
+36
+17
+23
+iteration number 823
+10
+36
+17
+23
+iteration number 824
+10
+36
+17
+23
+iteration number 825
+10
+36
+17
+23
+iteration number 826
+10
+36
+17
+23
+iteration number 827
+10
+36
+17
+23
+iteration number 828
+10
+36
+17
+23
+iteration number 829
+10
+36
+17
+23
+iteration number 830
+10
+36
+17
+23
+iteration number 831
+10
+36
+17
+23
+iteration number 832
+10
+36
+17
+23
+iteration number 833
+8
+36
+17
+23
+iteration number 834
+8
+36
+17
+23
+iteration number 835
+8
+36
+17
+23
+iteration number 836
+8
+36
+17
+23
+iteration number 837
+8
+36
+17
+23
+iteration number 838
+8
+36
+17
+23
+iteration number 839
+8
+36
+17
+23
+iteration number 840
+8
+17
+17
+23
+iteration number 841
+8
+17
+13
+23
+iteration number 842
+8
+17
+13
+23
+iteration number 843
+8
+17
+13
+23
+iteration number 844
+8
+17
+13
+23
+iteration number 845
+8
+17
+13
+23
+iteration number 846
+8
+17
+13
+23
+iteration number 847
+8
+17
+13
+23
+iteration number 848
+8
+17
+13
+23
+iteration number 849
+8
+17
+13
+23
+iteration number 850
+8
+17
+13
+23
+iteration number 851
+8
+17
+13
+23
+iteration number 852
+8
+17
+13
+23
+iteration number 853
+8
+17
+13
+23
+iteration number 854
+8
+17
+13
+23
+iteration number 855
+8
+17
+13
+23
+iteration number 856
+8
+17
+13
+23
+iteration number 857
+8
+17
+13
+23
+iteration number 858
+8
+17
+13
+23
+iteration number 859
+8
+17
+13
+23
+iteration number 860
+8
+17
+13
+23
+iteration number 861
+8
+17
+13
+23
+iteration number 862
+8
+17
+13
+23
+iteration number 863
+8
+17
+13
+23
+iteration number 864
+8
+17
+13
+23
+iteration number 865
+8
+17
+13
+23
+iteration number 866
+8
+17
+13
+23
+iteration number 867
+8
+17
+23
+23
+iteration number 868
+8
+17
+23
+23
+iteration number 869
+8
+17
+23
+23
+iteration number 870
+8
+17
+23
+23
+iteration number 871
+8
+17
+23
+23
+iteration number 872
+8
+11
+23
+23
+iteration number 873
+8
+11
+23
+23
+iteration number 874
+8
+11
+23
+23
+iteration number 875
+8
+11
+23
+23
+iteration number 876
+8
+11
+23
+23
+iteration number 877
+8
+11
+23
+23
+iteration number 878
+8
+11
+23
+23
+iteration number 879
+8
+11
+23
+23
+iteration number 880
+8
+11
+23
+23
+iteration number 881
+8
+11
+23
+23
+iteration number 882
+8
+11
+23
+22
+iteration number 883
+8
+11
+23
+22
+iteration number 884
+8
+11
+23
+22
+iteration number 885
+8
+11
+23
+22
+iteration number 886
+8
+11
+23
+22
+iteration number 887
+8
+11
+23
+22
+iteration number 888
+8
+11
+23
+22
+iteration number 889
+8
+11
+23
+22
+iteration number 890
+8
+11
+23
+22
+iteration number 891
+8
+11
+23
+22
+iteration number 892
+8
+11
+23
+22
+iteration number 893
+8
+11
+23
+22
+iteration number 894
+9
+11
+23
+22
+iteration number 895
+9
+11
+23
+22
+iteration number 896
+9
+11
+23
+22
+iteration number 897
+9
+11
+23
+22
+iteration number 898
+9
+11
+23
+22
+iteration number 899
+9
+11
+23
+22
+iteration number 900
+9
+11
+23
+22
+iteration number 901
+9
+11
+23
+22
+iteration number 902
+9
+11
+23
+22
+iteration number 903
+9
+11
+23
+22
+iteration number 904
+9
+11
+23
+22
+iteration number 905
+9
+11
+23
+22
+iteration number 906
+9
+11
+23
+22
+iteration number 907
+9
+11
+23
+22
+iteration number 908
+9
+11
+23
+22
+iteration number 909
+9
+11
+23
+22
+iteration number 910
+9
+11
+23
+22
+iteration number 911
+9
+11
+23
+22
+iteration number 912
+9
+11
+23
+22
+iteration number 913
+9
+17
+23
+22
+iteration number 914
+9
+17
+23
+22
+iteration number 915
+9
+17
+23
+22
+iteration number 916
+9
+17
+23
+22
+iteration number 917
+9
+17
+23
+22
+iteration number 918
+9
+17
+23
+22
+iteration number 919
+24
+17
+23
+22
+iteration number 920
+24
+17
+23
+22
+iteration number 921
+24
+17
+23
+22
+iteration number 922
+24
+17
+23
+22
+iteration number 923
+24
+17
+23
+22
+iteration number 924
+24
+17
+23
+22
+iteration number 925
+24
+17
+23
+22
+iteration number 926
+24
+17
+23
+22
+iteration number 927
+24
+17
+23
+22
+iteration number 928
+24
+17
+23
+22
+iteration number 929
+24
+17
+23
+22
+iteration number 930
+24
+17
+23
+22
+iteration number 931
+24
+17
+23
+22
+iteration number 932
+24
+17
+23
+22
+iteration number 933
+24
+17
+23
+22
+iteration number 934
+24
+17
+23
+5
+iteration number 935
+24
+17
+23
+5
+iteration number 936
+24
+17
+23
+5
+iteration number 937
+24
+17
+23
+5
+iteration number 938
+24
+17
+23
+5
+iteration number 939
+24
+17
+23
+5
+iteration number 940
+24
+17
+23
+5
+iteration number 941
+24
+17
+23
+5
+iteration number 942
+24
+17
+23
+5
+iteration number 943
+24
+17
+23
+5
+iteration number 944
+24
+17
+23
+5
+iteration number 945
+24
+17
+23
+5
+iteration number 946
+24
+17
+23
+5
+iteration number 947
+12
+17
+23
+5
+iteration number 948
+12
+17
+23
+5
+iteration number 949
+12
+17
+23
+5
+iteration number 950
+12
+17
+23
+5
+iteration number 951
+12
+17
+23
+5
+iteration number 952
+12
+27
+23
+5
+iteration number 953
+12
+27
+23
+5
+iteration number 954
+12
+27
+23
+5
+iteration number 955
+12
+27
+23
+5
+iteration number 956
+12
+27
+23
+5
+iteration number 957
+12
+27
+23
+5
+iteration number 958
+12
+27
+23
+5
+iteration number 959
+12
+27
+23
+5
+iteration number 960
+12
+27
+23
+5
+iteration number 961
+12
+27
+23
+5
+iteration number 962
+12
+27
+23
+5
+iteration number 963
+12
+27
+23
+5
+iteration number 964
+12
+27
+23
+5
+iteration number 965
+12
+27
+23
+5
+iteration number 966
+12
+27
+23
+5
+iteration number 967
+12
+27
+23
+5
+iteration number 968
+12
+27
+23
+5
+iteration number 969
+12
+27
+23
+5
+iteration number 970
+12
+27
+23
+5
+iteration number 971
+12
+27
+23
+5
+iteration number 972
+12
+27
+23
+5
+iteration number 973
+12
+27
+23
+5
+iteration number 974
+12
+27
+23
+5
+iteration number 975
+12
+27
+23
+5
+iteration number 976
+12
+27
+23
+5
+iteration number 977
+12
+27
+23
+5
+iteration number 978
+12
+27
+23
+5
+iteration number 979
+12
+27
+23
+11
+iteration number 980
+12
+27
+23
+11
+iteration number 981
+12
+27
+29
+11
+iteration number 982
+12
+27
+29
+11
+iteration number 983
+12
+27
+29
+11
+iteration number 984
+12
+27
+29
+11
+iteration number 985
+12
+27
+29
+11
+iteration number 986
+12
+27
+29
+11
+iteration number 987
+12
+27
+29
+11
+iteration number 988
+12
+27
+29
+11
+iteration number 989
+12
+27
+29
+11
+iteration number 990
+12
+27
+29
+11
+iteration number 991
+12
+27
+29
+11
+iteration number 992
+12
+27
+29
+11
+iteration number 993
+12
+27
+29
+11
+iteration number 994
+12
+27
+29
+11
+iteration number 995
+12
+27
+29
+11
+iteration number 996
+12
+27
+29
+11
+iteration number 997
+12
+27
+29
+11
+iteration number 998
+12
+27
+29
+11
+iteration number 999
+12
+27
+29
+11

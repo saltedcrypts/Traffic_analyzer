@@ -9,9 +9,9 @@ from pygame.locals import *
 pygame.init()
 screen=pygame.display.set_mode((786,293),0,32)
 background=pygame.image.load('testmap.png').convert()
-dot=pygame.image.load('download.png').convert_alpha()
-BusPoint=pygame.image.load('bus.png').convert_alpha()
-RealBusPoint=pygame.image.load('real.gif').convert_alpha()
+dot=pygame.image.load('image_1/download.png').convert_alpha()
+BusPoint=pygame.image.load('image_1/bus.png').convert_alpha()
+RealBusPoint=pygame.image.load('image_1/rect.png').convert_alpha()
 screen.blit(background,(0,0))
 git=0
 im = plt.imread('testmap.png')
@@ -33,6 +33,8 @@ rows=[]
 x=[35,120,215,120,215,305,396,485,354,320,515,510,570]
 y=[141,84,28,235,185,130,185,132,82,220,230,40,150]
 
+stop_icons=["one.png","two.png","three.png","four.jpg","five.png","six.jpg","seven.png","eight.png","nine.jpg","ten.jpg","eleven.png","twelve.png"]
+st_icons=[pygame.image.load("images/"+i).convert() for i in stop_icons]
 avg_wait_time=[[0 for i in range(1500)] for j in range(len(x))]
 bus_freq=[0 for i in range(len(x))]
 
@@ -252,6 +254,8 @@ with con,con1,con2:
                         ppl_count+=1
                         tot_val+=avg_wait_time[itr][jtr]
                         avg_wait_time[itr][jtr]=0
+                if (ppl_count==0):
+                    ppl_count=1
 
                 #WRITE IN DATABSE -- i, itr ,tot_val/ppl_count
                 cur1.execute('INSERT INTO WaitTime VALUES(%d,%d,%f)'%(i,itr,(tot_val/ppl_count)))
@@ -341,12 +345,15 @@ with con,con1,con2:
             pass
         cbus=[avgcoord(k[0],pos) for k in bus]
         screen.blit(background,(0,0))
+        for j in range(len(st_icons)):
+            screen.blit(st_icons[j],(x[j]-20,y[j]-20))
+
         for j in range(len(rows)):
             #print j
             #pt1[j].set_data(rows[j][2]+random()*((-1)**j),rows[j][3]+random()*((-1)**j))
             screen.blit(dot,(rows[j][1]+5*random()*((-1)**j),rows[j][2]+5*random()*((-1)**j)))
         for j in range(len(Rrtx)):
-            screen.blit(RealBusPoint,(Rrtx[j][i%len(Rrtx[j])],Rrty[j][i%len(Rrtx[j])]))
+            screen.blit(RealBusPoint,(Rrtx[j][i%len(Rrtx[j])]-6,Rrty[j][i%len(Rrtx[j])]-6))
         print len(cbus),' -> ',i
         for k in bus:
             print len(k[0]),k[1]
