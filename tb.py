@@ -1,7 +1,12 @@
 from kivy.uix.togglebutton import ToggleButton
 from kivy.base import runTouchApp
 from kivy.uix.button import Button
+from auxiliary_request import *
+dic={}
+for i in range(12):
+	dic['Bus Stop '+str(i+1)]=i
 
+fin_choice=0
 
 tb = ToggleButton(text = "Choose Bus Stop",group = 'misc' ,size_hint=(0.15,0.1),state = 'down', height=44, pos = (350,550))
  
@@ -25,11 +30,12 @@ def func(instance):
 			if child.state == 'down':
 				if child.group == 'Initial':
 					print "initial choice=",child.text
+					request(dic[child.text],fin_choice)
+				
 				else:
 					print "final choice=",child.text
+					fin_choice=dic[child.text]
 		#clicked = 1
-	else:
-		pass
 
 mainbutton = Button(text='Enter', size_hint=(None, None), pos = (350,10))
 tb.add_widget(mainbutton)
