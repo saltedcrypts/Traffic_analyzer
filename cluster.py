@@ -30,8 +30,8 @@ bus=[]
 bstp=[0 for i in range(100)]
 new_bus=0
 rows=[]
-x=[35,120,215,120,215,305,396,485,621,759,354,320]
-y=[141,84,28,235,185,130,185,132,184,78,82,220]
+x=[35,120,215,120,215,305,396,485,354,320,515,510,570]
+y=[141,84,28,235,185,130,185,132,82,220,230,40,150]
 ##################################################################################################################################################
 Rrtx=[[] for i in range(100)]
 Rrty=[[] for i in range(100)]
@@ -107,7 +107,7 @@ def cluster(a):
         for j in a:
             if i==j:
                 continue
-            if dist([i[1],i[2]],[j[1],j[2]])<12 and i[4]==j[4] and abs(i[3]-j[3])<10:
+            if dist([i[1],i[2]],[j[1],j[2]])<7 and i[4]==j[4] and abs(i[3]-j[3])<10:
                 
                 adj_list[a.index(i)].append(a.index(j))
     # RUNNING DFS TO IDENTIFY THE CLUSTER
@@ -208,7 +208,7 @@ with con,con1,con2:
     for i in range(50):
         cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(i,-1,-1))
         cur1.execute('INSERT INTO BusRoute VALUES(%d,"%s")'%(i,''))
-    for i in range(950):
+    for i in range(1,950):
         if (i%50==0):
             print i
         cur.execute("SELECT * FROM Data WHERE ItterID = %d ORDER BY Id"%i)
@@ -297,9 +297,9 @@ with con,con1,con2:
         
         
            
-        time.sleep(0.5)
+        time.sleep(0.1)
         pygame.display.update()   
-        plt.pause(0.001)
+        #plt.pause(0.001)
         con1.commit()
         con2.commit()
         con.commit()
