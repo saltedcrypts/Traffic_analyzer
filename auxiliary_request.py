@@ -66,7 +66,7 @@ def request(stat1,stat2):
     pygame.init()
     screen=pygame.display.set_mode((786,293),0,32)
     background=pygame.image.load('testmap.png').convert()
-    dot=pygame.image.load('image_1/bus.png').convert_alpha()
+    dot=pygame.image.load('icons/bus.png').convert_alpha()
     screen.blit(background,(0,0))
     pygame.display.update()
     possible=[]

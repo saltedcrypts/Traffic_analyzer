@@ -9,9 +9,9 @@ from pygame.locals import *
 pygame.init()
 screen=pygame.display.set_mode((786,293),0,32)
 background=pygame.image.load('testmap.png').convert()
-dot=pygame.image.load('image_1/download.png').convert_alpha()
-BusPoint=pygame.image.load('image_1/bus.png').convert_alpha()
-RealBusPoint=pygame.image.load('image_1/rect.png').convert_alpha()
+dot=pygame.image.load('icons/download.png').convert_alpha()
+BusPoint=pygame.image.load('icons/bus.png').convert_alpha()
+RealBusPoint=pygame.image.load('icons/rect.png').convert_alpha()
 screen.blit(background,(0,0))
 git=0
 im = plt.imread('testmap.png')

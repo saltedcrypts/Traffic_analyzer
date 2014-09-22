@@ -1,7 +1,7 @@
 from kivy.uix.togglebutton import ToggleButton
 from kivy.base import runTouchApp
 from kivy.uix.button import Button
-from request import *
+from auxiliary_request import *
 dic={}
 for i in range(12):
 	dic['Bus Stop '+str(i+1)]=i
