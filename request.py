@@ -4,7 +4,7 @@ from kivy.uix.button import Button
 from auxiliary_request import *
 dic={}
 for i in range(12):
-	dic['Bus Stop '+str(i+1)]=i
+	dic['Bus Stop '+str(i)]=i
 
 fin_choice=0
 
@@ -12,12 +12,12 @@ tb = ToggleButton(text = "Choose Bus Stop",group = 'misc' ,size_hint=(0.15,0.1),
  
 for i in range (1,13):
 
-	btn1 = ToggleButton(text='Bus Stop %d' % i, group='Initial',size_hint=(0.075,0.075), height=44, pos = (80,500-40*i))
+	btn1 = ToggleButton(text='Bus Stop %d' % (i-1), group='Initial',size_hint=(0.075,0.075), height=44, pos = (80,500-40*i))
 	tb.add_widget(btn1)
 
 for i in range (1,13):
 
-	btn1 = ToggleButton(text='Bus Stop %d' % i, group='Final',size_hint=(0.075,0.075), height=44, pos = (600,500-40*i))
+	btn1 = ToggleButton(text='Bus Stop %d' % (i-1), group='Final',size_hint=(0.075,0.075), height=44, pos = (600,500-40*i))
 	tb.add_widget(btn1)
 
 clicked = 0
@@ -30,8 +30,9 @@ def func(instance):
 			if child.state == 'down':
 				if child.group == 'Initial':
 					print "initial choice=",child.text
-					request(dic[child.text],fin_choice)
-				
+					recv_val= request(dic[child.text],fin_choice)
+					print recv_val
+
 				else:
 					print "final choice=",child.text
 					fin_choice=dic[child.text]

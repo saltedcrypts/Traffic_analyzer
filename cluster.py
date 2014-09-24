@@ -19,8 +19,16 @@ git=0
 con1=connect('database/BusRoute.db')
 con2=connect('database/BusPos.db')      
 bus_pointer=0
-con=connect('database/DatabaseAlt_new.db')
-conn=connect('database/Bus_new.db')
+
+############################## CHANGE DATABASE NAME HERE ####################################################################
+
+#con=connect('database/DatabaseAlt_new_2.db')   #Uncomment it for using database-2 and comment database-1 below
+#conn=connect('database/Bus_new_2.db')		    #Uncomment it for using database-2 and comment database-1 below
+
+con=connect('database/DatabaseAlt_new.db')    #SELECTED BY DEFAULT -- Decomment it in for using database-1
+conn=connect('database/Bus_new.db')			  #SELECTED BY DEFAULT -- Decomment it in for using database-1
+
+############################### CHANGE DATABASE NAME HERE  ###############################################
 cur=con.cursor()
 cur1=con1.cursor()
 cur2=con2.cursor()
@@ -34,7 +42,7 @@ rows=[]
 x=[35,120,215,120,215,305,396,485,354,320,515,510,570]
 y=[141,84,28,235,185,130,185,132,82,220,230,40,150]
 
-stop_icons=["one.png","two.png","three.png","four.jpg","five.png","six.jpg","seven.png","eight.png","nine.jpg","ten.jpg","eleven.png","twelve.png"]
+stop_icons=["zero.jpg","one.png","two.png","three.png","four.jpg","five.png","six.jpg","seven.png","eight.png","nine.jpg","ten.jpg","eleven.png"]
 st_icons=[pygame.image.load("images/"+i).convert() for i in stop_icons]
 avg_wait_time=[[0 for i in range(1500)] for j in range(len(x))]
 bus_freq=[0 for i in range(len(x))]
@@ -104,13 +112,8 @@ def near(pos):
 def SortKey(a):
     return a[3]
 def SetDiff(a,b):
-    a.sort()
-    b.sort()
     thres=0.2
-    common=0
-    for i in a:
-        if(i in b):
-            common=common+1
+    common=len(set.intersection(set(a),set(b)))
     if(common>(thres)*len(a)):
         return 1
     else:
@@ -121,10 +124,6 @@ def cluster(a):
     minspeed=30
     thres=5
     a=[i for i in a if i[3]>minspeed]
-    for i in a:
-        #print i[0],':',i[3],
-        pass
-    #print ''
     adj_list=[[] for j in range(len(a))]
     for i in a:
         for j in a:
@@ -242,13 +241,17 @@ cur1.execute("DROP TABLE IF EXISTS BusRoute")
 cur2.execute("CREATE TABLE BusPos(Id INT, posx FLOAT, posy FLOAT)")
 cur1.execute("CREATE TABLE BusRoute(Id INT, Route TEXT)")
 
-test=[0 for i in range(50)]
+test=[0 for i in range(100)]
 #############################################################################################################################################################
 with con,con1,con2:
-    for i in range(50):
+    for i in range(100):
         cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(i,-1,-1))
         cur1.execute('INSERT INTO BusRoute VALUES(%d,"%s")'%(i,''))
     for i in range(1,1000):
+        for event in pygame.event.get():
+            if event.type == QUIT: ## defined in pygame.locals
+                pygame.quit()
+
         if(i%100==0):
             for itr in range(len(x)):
                 ppl_count=0
@@ -341,7 +344,7 @@ with con,con1,con2:
         for iter_prnt in bus:
             print iter_prnt[0],rows[iter_prnt[0][0]][3] # Print the ID of points belonging to the bus  
             #print route[iter_prnt[1]],near(avgcoord(iter_prnt[0],pos))
-            pass
+            #pass
         cbus=[avgcoord(k[0],pos) for k in bus]
         screen.blit(background,(0,0))
         for j in range(len(st_icons)):
