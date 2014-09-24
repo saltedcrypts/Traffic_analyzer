@@ -19,7 +19,8 @@ git=0
 con1=connect('database/BusRoute.db')
 con2=connect('database/BusPos.db')      
 bus_pointer=0
-con=connect('database/DatabaseAlt_new_2.db')
+con=connect('database/DatabaseAlt_new.db')
+conn=connect('database/Bus_new.db')
 cur=con.cursor()
 cur1=con1.cursor()
 cur2=con2.cursor()
@@ -41,7 +42,7 @@ timer=[0 for i in range(100)]
 ##################################################################################################################################################
 Rrtx=[[] for i in range(100)]
 Rrty=[[] for i in range(100)]
-conn=connect('database/Bus_new_2.db')
+
 with conn:
     curr=conn.cursor()
     curr.execute("SELECT * FROM Bus ORDER BY id,Itter")
