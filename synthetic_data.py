@@ -15,7 +15,7 @@ from math import *
 from direction import *
 ## --------------------------------------------------##
 
-con=connect('database/DatabaseAlt_new_2.db')
+con=connect('database/DatabaseAlt_new_3.db')
 cur=con.cursor()
 #im = plt.imread('testmap.png')
 img = Image.open('testmap.png')
@@ -135,7 +135,7 @@ for bus in busses:
     rtx.append(routex)
     rty.append(routey)
 
-conn=connect('database/Bus_new_2.db')
+conn=connect('database/Bus_new_3.db')
 with conn:
     curr=conn.cursor()
     curr.execute("DROP TABLE IF EXISTS Bus")
