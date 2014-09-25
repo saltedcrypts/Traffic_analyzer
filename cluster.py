@@ -1,8 +1,8 @@
 from sqlite3 import *
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import sys
 from random import *
-import matplotlib.animation as animation
+#import matplotlib.animation as animation
 global git
 import pygame,sys
 from pygame.locals import *
@@ -14,12 +14,12 @@ BusPoint=pygame.image.load('icons/bus.png').convert_alpha()
 RealBusPoint=pygame.image.load('icons/rect.png').convert_alpha()
 screen.blit(background,(0,0))
 git=0
-im = plt.imread('testmap.png')
-implot = plt.imshow(im)
+#im = plt.imread('testmap.png')
+#implot = plt.imshow(im)
 con1=connect('database/BusRoute.db')
 con2=connect('database/BusPos.db')      
 bus_pointer=0
-con=connect('database/DatabaseAlt_new.db')
+con=connect('database/DatabaseAlt_new_2.db')
 cur=con.cursor()
 cur1=con1.cursor()
 cur2=con2.cursor()
@@ -37,11 +37,11 @@ stop_icons=["one.png","two.png","three.png","four.jpg","five.png","six.jpg","sev
 st_icons=[pygame.image.load("images/"+i).convert() for i in stop_icons]
 avg_wait_time=[[0 for i in range(1500)] for j in range(len(x))]
 bus_freq=[0 for i in range(len(x))]
-
+timer=[0 for i in range(100)]
 ##################################################################################################################################################
 Rrtx=[[] for i in range(100)]
 Rrty=[[] for i in range(100)]
-conn=connect('database/Bus_new.db')
+conn=connect('database/Bus_new_2.db')
 with conn:
     curr=conn.cursor()
     curr.execute("SELECT * FROM Bus ORDER BY id,Itter")
@@ -198,8 +198,11 @@ def preserve(bus,rows):
         for j in i[0]:
             tmp.append(rows[j])
         if avg(tmp[:])<20 or not(near(avgcoord_row_list(tmp))==-1):
-            unchanged.append(bus.index(i))
-            continue
+            if timer[i[1]]<8:
+                timer[i[1]]=timer[i[1]]+1
+                unchanged.append(bus.index(i))
+                continue    
+        timer[i[1]]=0   
         #print tmp
         t=cluster(tmp[:])
         if(len(t)==1):
@@ -264,9 +267,6 @@ with con,con1,con2:
                 cur1.execute('INSERT INTO BusFreq VALUES(%d,%d,%d)'%(i,itr,(bus_freq[itr])))
                 bus_freq[itr]=0
 
-
-        if (i%50==0):
-            print i
         cur.execute("SELECT * FROM Data WHERE ItterID=%d ORDER BY Id"%i)
         rows = cur.fetchall()
         rows=[j[1:] for j in rows]
@@ -328,8 +328,6 @@ with con,con1,con2:
             if(avg(tm)>30):
                 continue
             bstop=near([coord[0],coord[1]])
-            if bstop==4 and temp_bus[j][1]==1:
-                print '-> ',bstop,temp_bus[j][1],i,rows[temp_bus[j][0][0]][4]
             if not(bstop==-1 ):
                 if not(bstop in route[temp_bus[j][1]]):
                     route[temp_bus[j][1]].append(bstop)
@@ -340,7 +338,7 @@ with con,con1,con2:
         for srt_i in range(len(bus)):
             bus[srt_i][0].sort()
         for iter_prnt in bus:
-            print iter_prnt,rows[iter_prnt[0][0]][3]
+            print iter_prnt[0],rows[iter_prnt[0][0]][3] # Print the ID of points belonging to the bus  
             #print route[iter_prnt[1]],near(avgcoord(iter_prnt[0],pos))
             pass
         cbus=[avgcoord(k[0],pos) for k in bus]
@@ -354,7 +352,7 @@ with con,con1,con2:
             screen.blit(dot,(rows[j][1]+5*random()*((-1)**j),rows[j][2]+5*random()*((-1)**j)))
         for j in range(len(Rrtx)):
             screen.blit(RealBusPoint,(Rrtx[j][i%len(Rrtx[j])]-6,Rrty[j][i%len(Rrtx[j])]-6))
-        print len(cbus),' -> ',i
+        print i,' -> ',len(cbus)  #Prints the iteration number and the number of busses 
         for k in bus:
             print len(k[0]),k[1]
             #print k[1],k[0]
@@ -391,4 +389,5 @@ with con,con1,con2:
             #pt[j].set_data(x[i[j]],y[i[j]])
         #plt.pause(10d
             pass
-
+pygame.quit()
+sys.exit()
