@@ -17,7 +17,8 @@ git=0
 #im = plt.imread('testmap.png')
 #implot = plt.imshow(im)
 con1=connect('database/BusRoute.db')
-con2=connect('database/BusPos.db')      
+con2=connect('database/BusPos.db')
+con3=connect('database/Itter.db')
 bus_pointer=0
 
 ############################## CHANGE DATABASE NAME HERE ####################################################################
@@ -31,6 +32,7 @@ conn=connect('database/Bus_new.db')			  #SELECTED BY DEFAULT -- Decomment it in 
 ############################### CHANGE DATABASE NAME HERE  ###############################################
 cur=con.cursor()
 cur1=con1.cursor()
+cur3=con3.cursor()
 cur2=con2.cursor()
 pos=[[-1,-1] for i in range(1500)]
 stationx=[35,120,215,120,215,305,396,485,621,759,354,320]
@@ -231,9 +233,11 @@ for i in range(1000):
 
 cur1.execute("DROP TABLE IF EXISTS WaitTime")
 cur1.execute("DROP TABLE IF EXISTS BusFreq")
+cur1.execute("DROP TABLE IF EXISTS Current")
 
 cur1.execute("CREATE TABLE WaitTime(ItId INT,StatId INT, Wait FLOAT)")
 cur1.execute("CREATE TABLE BusFreq(ItId INT,StatId INT, Freq INT)")
+cur1.execute("CREATE TABLE Current(Id INT,ItId INT)")
 
 cur2.execute("DROP TABLE IF EXISTS BusPos")
 cur1.execute("DROP TABLE IF EXISTS BusRoute")
@@ -243,11 +247,13 @@ cur1.execute("CREATE TABLE BusRoute(Id INT, Route TEXT)")
 
 test=[0 for i in range(100)]
 #############################################################################################################################################################
-with con,con1,con2:
+with con,con1,con2,con3:
+    cur1.execute("INSERT INTO Current VALUES(%d,%d)"%(0,0))
     for i in range(100):
         cur2.execute("INSERT INTO BusPos VALUES(%d,%f,%f)"%(i,-1,-1))
         cur1.execute('INSERT INTO BusRoute VALUES(%d,"%s")'%(i,''))
     for i in range(1,1000):
+        cur1.execute('UPDATE  Current SET ItId=%d WHERE Id=0'%(i))
         for event in pygame.event.get():
             if event.type == QUIT: ## defined in pygame.locals
                 pygame.quit()
@@ -374,6 +380,7 @@ with con,con1,con2:
         pygame.display.update()   
         #plt.pause(0.001)
         con1.commit()
+        con3.commit()
         con2.commit()
         con.commit()
         #print "1"
